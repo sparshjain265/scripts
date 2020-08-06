@@ -81,13 +81,14 @@ extended=0
 # Process the input options. Add options as needed.                            #
 ################################################################################
 # Get the options
-while getopts ":h" option; do
+while getopts "heV" option; do
    case $option in
       h) # display Help
          Help
          exit;;
       e) # enable extended mode
          extended=1
+         ;;
       V) # display version
          Version
          exit;;
@@ -102,7 +103,7 @@ sudo apt update
 # upgrade packages
 sudo apt upgrade -y
 # if running in extended version
-if [extended = 1]; then
+if [ $extended = 1 ]; then
    # update extra packagers here
    # update thefuck
    pip3 install thefuck --upgrade
