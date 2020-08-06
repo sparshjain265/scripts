@@ -24,5 +24,8 @@
 echo "hello world!"
 
 # functions here
+# help function
+# function to test whether the program user is root
+# method for evaluating command line options
 
 # main here
