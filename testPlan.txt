@@ -6,4 +6,4 @@
 6.  Specific tests designed to test for negative outcomes
 7.  Tests for how the program handles unexpected inputs
 8.  A clear description of what constitutes pass or fail for each test
-9.  Fuzzy testing, which is described below
+9.  Fuzzy testing
