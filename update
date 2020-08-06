@@ -35,6 +35,7 @@ Help()
    # echo "v     Verbose mode."
    echo "e     Run an extended version to update programs installed from outside
       apt."
+   echo "q     Run quietly. Check ~/.log for details."
    echo "V     Print software version and exit."
    echo
 }
@@ -77,17 +78,27 @@ CheckRoot()
 option=""
 msg="Hello World!"
 extended=0
+# save stdout
+exec 6>&1
+# save stderr
+exec 7>&2
 ################################################################################
 # Process the input options. Add options as needed.                            #
 ################################################################################
 # Get the options
-while getopts "heV" option; do
+while getopts "heqV" option; do
    case $option in
       h) # display Help
          Help
          exit;;
       e) # enable extended mode
          extended=1
+         ;;
+      q) # run quietly
+         # redirect output to .stdout
+         exec 1> ~/.log
+         # redirect error to .stderr
+         exec 2> ~/.log
          ;;
       V) # display version
          Version
@@ -99,9 +110,9 @@ while getopts "heV" option; do
 done
 
 # update repos
-sudo apt update
+sudo apt-get update
 # upgrade packages
-sudo apt upgrade -y
+sudo apt-get upgrade -y
 # if running in extended version
 if [ $extended = 1 ]; then
    # update extra packagers here
@@ -116,6 +127,10 @@ if [ $extended = 1 ]; then
    cd ~
 fi
 # cleaning
-sudo apt autoremove -y
-sudo apt autoclean
-sudo apt clean
+sudo apt-get autoremove -y
+sudo apt-get autoclean
+sudo apt-get clean
+# restore stdout
+exec 1>&6 6>&-
+# restore stderr
+exec 2>&7 7>&-
