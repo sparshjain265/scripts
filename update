@@ -28,7 +28,7 @@ Help()
    # Display Help
    echo "Add description of the script functions here."
    echo
-   echo "Syntax: scriptTemplate [-h|e|V]"
+   echo "Syntax: update [-h|e|q|V]"
    echo "options:"
    # echo "g     Print the GPL license notification."
    echo "h     Print this Help."
