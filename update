@@ -1,14 +1,14 @@
 #!/usr/bin/bash
 ################################################################################
-#                              update                                          #
+#                                 update                                       #
 #                                                                              #
 # This is a script written to automate the update of repos, upgrade as         #
 # required, and remove unnecessary packages                                    #
 # This is a hello world script written while learning about bash scripting.    #
 #                                                                              #
 # Change History                                                               #
-# 06/08/2020    Sparsh Jain Original code.                                     #
-#                                                                              #
+# 2020 Nov 04	Sparsh Jain - Reorganise									   #
+# 2020 Aug 06	Sparsh Jain - Original code.								   #
 #                                                                              #
 ################################################################################
 ################################################################################
@@ -26,16 +26,16 @@
 Help()
 {
    # Display Help
-   echo "Add description of the script functions here."
+   echo "Description of the script functions"
    echo
-   echo "Syntax: update [-h|e|q|V]"
+   echo "Syntax: # update [-h|e|q|V]"
    echo "options:"
    # echo "g     Print the GPL license notification."
    echo "h     Print this Help."
    # echo "v     Verbose mode."
    echo "e     Run an extended version to update programs installed from outside
-      apt."
-   echo "q     Run quietly. Check ~/.log for details."
+	  of apt."
+   echo "q     Run quietly. Check ~/temp/update.log for details."
    echo "V     Print software version and exit."
    echo
 }
@@ -46,7 +46,7 @@ Help()
 Version()
 {
    # Display Version
-   echo "update 2.0"
+   echo "update 2.1"
    echo
 }
 
@@ -57,9 +57,38 @@ CheckRoot()
 {
    if [ `id -u` != 0 ]
    then
-      echo "ERROR: You must be root user to run this program"
-      exit
+	  echo "ERROR: You must be root user to run this program! Try with sudo!"
+	  echo 
+	  exit
    fi  
+}
+
+################################################################################
+# Init																		   #
+################################################################################
+Init()
+{
+	# Initialize variables
+	option=""
+	msg="Hello World!"
+	extended=0
+	# save stdout
+	exec 6>&1
+	# save stderr
+	exec 7>&2
+}
+
+################################################################################
+# Exit 																		   #
+################################################################################
+Exit()
+{
+	# restore stdout
+	exec 1>&6 6>&-
+	# restore stderr
+	exec 2>&7 7>&-
+	# exit
+	exit
 }
 
 ################################################################################
@@ -74,63 +103,68 @@ CheckRoot()
 # Are we running as root?
 # CheckRoot # uncomment this line to enable check for root 
 
-# Initialize variables
-option=""
-msg="Hello World!"
-extended=0
-# save stdout
-exec 6>&1
-# save stderr
-exec 7>&2
+################################################################################
+# Initialize
+################################################################################
+Init
+
 ################################################################################
 # Process the input options. Add options as needed.                            #
 ################################################################################
 # Get the options
 while getopts "heqV" option; do
    case $option in
-      h) # display Help
-         Help
-         exit;;
-      e) # enable extended mode
-         extended=1
-         ;;
-      q) # run quietly
-         # redirect output to .stdout
-         exec 1> ~/.log
-         # redirect error to .stderr
-         exec 2> ~/.log
-         ;;
-      V) # display version
-         Version
-         exit;;
-     \?) # incorrect option
-         echo "Error: Invalid option"
-         exit;;
+	  h) # display Help
+		 Help
+		 Exit
+		 ;;
+	  e) # enable extended mode
+		 extended=1
+		 ;;
+	  q) # run quietly
+		 # redirect output to .stdout
+		 exec 1> ~/temp/update.log
+		 # redirect error to .stderr
+		 exec 2> ~/temp/update.log
+		 ;;
+	  V) # display version
+		 Version
+		 Exit
+		 ;;
+	 \?) # incorrect option
+		 echo "Error: Invalid option"
+		 Exit
+		 ;;
    esac
 done
+
+# Are we running as root?
+CheckRoot # uncomment this line to enable check for root 
 
 # update repos
 sudo apt-get update
 # upgrade packages
 sudo apt-get upgrade -y
+
 # if running in extended version
 if [ $extended = 1 ]; then
    # update extra packagers here
+
    # update thefuck
    pip3 install thefuck --upgrade
+
    # update veikk driver for linux
-   cd ~/veikk-linux-driver
-   git fetch
+   dir=$(pwd)
+   cd /home/wheezy/veikk/veikk-linux-driver
+   # git fetch
    make
    sudo make all install clean
    sudo modprobe veikk
-   cd ~
+   cd $dir
 fi
+
 # cleaning
 sudo apt-get autoremove -y
 sudo apt-get autoclean
 sudo apt-get clean
-# restore stdout
-exec 1>&6 6>&-
-# restore stderr
-exec 2>&7 7>&-
+Exit
