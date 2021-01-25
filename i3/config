@@ -222,7 +222,7 @@ bar {
 
 # Startup programs
 exec i3-sensible-terminal
-exec --no-startup-id ~/.config/i3/column_layout
+exec --no-startup-id ~/.config/i3/column-layout
 # wallpaper
 # exec_always feh --bg-scale /home/wheezy/Pictures/Wallpapers/hogwarts-7031x4000-burning-harry-potter-and-the-deathly-hallows-4k-8k-8930.jpg
 
