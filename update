@@ -139,7 +139,7 @@ while getopts "heqV" option; do
 done
 
 # Are we running as root?
-CheckRoot # uncomment this line to enable check for root 
+# CheckRoot # uncomment this line to enable check for root 
 
 # update repos
 sudo apt-get update
