@@ -76,8 +76,8 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -104,8 +104,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-alias python=python3
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -201,12 +199,6 @@ export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w \`parse_git_branch\`
 eval $(thefuck --alias --enable-experimental-instant-mode)
 # you can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
-
-# my alias
-alias pdf="xdg-open 2>/dev/null"
-alias open="xdg-open"
-alias shit="fuck"
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
