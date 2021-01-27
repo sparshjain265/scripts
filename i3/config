@@ -138,6 +138,9 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+z focus child
 
+# focus
+bindsym $mod+g focus
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -222,7 +225,7 @@ bar {
 
 # Startup programs
 exec i3-sensible-terminal
-exec --no-startup-id ~/.config/i3/column-layout
+exec_always --no-startup-id ~/.config/i3/column-layout
 # wallpaper
 # exec_always feh --bg-scale /home/wheezy/Pictures/Wallpapers/hogwarts-7031x4000-burning-harry-potter-and-the-deathly-hallows-4k-8k-8930.jpg
 

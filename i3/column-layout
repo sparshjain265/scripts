@@ -4,8 +4,6 @@
 
 from i3ipc import Connection, Event
 
-COLUMNS = 2
-
 
 def move_container(con1, con2):
     con2.command("mark __column-layout")
@@ -25,7 +23,8 @@ def layout(i3, event):
                     move_container(child, workspace)
     else:
         # find current window
-        window = i3.get_tree().find_by_id(event.container.id)
+        # window = i3.get_tree().find_by_id(event.container.id)
+        window = i3.get_tree().find_focused()
         # if window exists
         if window is not None:
             # get current workspace from window
@@ -38,41 +37,21 @@ def layout(i3, event):
                     pass
                 # if exactly 1 node exists
                 elif len(workspace.nodes) == 1:
+                    workspace.command("splith")
                     # set layout for each node as splith
                     for node in workspace.nodes:
-                        if node.layout != "splith":
-                            node.command("splith")
+                        node.command("splith")
                 # if 2 nodes exist
                 elif len(workspace.nodes) == 2:
-                    # splitv everywhere
+                    # for each node
                     for node in workspace.nodes:
-                        if node.layout != "splitv":
+                        if len(node.nodes) <= 1:
                             node.command("splitv")
-                # if 3 nodes exist
-                elif len(workspace.nodes) == 3:
-                    # find the right node
+                # else if 3 or more nodes exist
+                else:
                     for node in workspace.nodes:
-                        # if same height
-                        if node.rect.height == workspace.rect.height:
-                            # focus here if not focused
-                            if not node.focused:
-                                # splitv here
-                                if node.layout != "splitv":
-                                    node.command("splitv")
-                            # continue when found
-                            continue
-                # if 4 nodes exist
-                elif len(workspace.nodes) == 4:
-                    # set layout for each node as splith
-                    for node in workspace.nodes:
-                        if node.layout != "splith":
-                            node.command("splith")
-
-            # # if workspace exists and more than COLUMNS nodes exist
-            # if workspace is not None and len(workspace.nodes) >= COLUMNS:
-            #     for node in workspace.nodes:
-            #         if node.layout != "splitv":
-            #             node.command("splitv")
+                        # splitv here
+                        node.command("splitv")
 
 
 i3 = Connection()
