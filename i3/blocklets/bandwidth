@@ -109,6 +109,8 @@ else
   echo -n "↓${rx_kib}K"
 fi
 
+echo
+
 # mouse buttons  
 case $BLOCK_BUTTON in
     1) tm-cli ;; # transmission-remote-cli
