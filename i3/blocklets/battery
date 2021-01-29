@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 #
 # Copyright (C) 2016 James Murphy
 # Licensed under the GPL version 2 only
@@ -58,7 +58,8 @@ else:
     FA_BATTERY = "<span font='FontAwesome'>\uf240</span>"
 
     # stands for unknown status of battery
-    FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
+    # FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
+    FA_QUESTION = ""
 
 
     if state == "Discharging":
