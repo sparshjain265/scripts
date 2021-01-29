@@ -9,6 +9,7 @@ Required symlinks and chmods are listed below.
 3. [update](update) -> ~/bin/update
 4. [i3](i3) -> ~/.config/i3
 5. [i3/i3blocks.conf](i3/i3blocks.conf) -> /etc/i3blocks.conf
+6. [dunst](dunst) -> ~/.config/dunst
 
 ## chmod +x
 1. [i3/column-layout](i3/column-layout)
