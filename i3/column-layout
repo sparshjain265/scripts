@@ -32,26 +32,32 @@ def layout(i3, event):
 
             # if workspace exists
             if workspace is not None:
-                # if less than 1 node, pass
-                if len(workspace.nodes) < 1:
-                    pass
-                # if exactly 1 node exists
-                elif len(workspace.nodes) == 1:
-                    workspace.command("splith")
-                    # set layout for each node as splith
-                    for node in workspace.nodes:
-                        node.command("splith")
+                # if exactly 1 node (column) exists
+                if len(workspace.nodes) == 1:
+                    # set layout for the node as splith
+                    if workspace.nodes[0].layout != "splith":
+                        workspace.nodes[0].command("splith")
                 # if 2 nodes exist
                 elif len(workspace.nodes) == 2:
                     # for each node
                     for node in workspace.nodes:
-                        if len(node.nodes) <= 1:
+                        # if less than or equal to 1 window in the column, splitv
+                        if len(node.nodes) <= 1 and node.layout != "splitv":
                             node.command("splitv")
+                        # if 3 windows, move the focused (new) window to the right (3rd column)
+                        elif len(node.nodes) == 3:
+                            for n in node.nodes:
+                                if n.focused:
+                                    n.command("move right")
+                                    if n.layout != "splitv":
+                                        n.command("splitv")
+                        # else nothing to do
                 # else if 3 or more nodes exist
                 else:
                     for node in workspace.nodes:
                         # splitv here
-                        node.command("splitv")
+                        if node.layout != "splitv":
+                            node.command("splitv")
 
 
 i3 = Connection()
