@@ -110,5 +110,3 @@ export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\`parse_git_branch\` 
 eval $(thefuck --alias --enable-experimental-instant-mode)
 # you can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
-
-

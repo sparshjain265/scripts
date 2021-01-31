@@ -141,17 +141,19 @@ done
 # Are we running as root?
 # CheckRoot # uncomment this line to enable check for root 
 
-# update repos
-sudo apt update
-# upgrade packages
-sudo apt upgrade -y
+# update official packages
+# sudo pacman -Syu
+
+# update AUR packages
+yay -Syu
 
 # if running in extended version
 if [ $extended = 1 ]; then
    # update extra packagers here
 
-   # update thefuck
-   pip3 install thefuck --upgrade
+# not needed, thefuck package is insalled via pacman
+#    # update thefuck
+#    pip3 install thefuck --upgrade
 
    # update veikk driver for linux
    dir=$(pwd)
@@ -164,7 +166,7 @@ if [ $extended = 1 ]; then
 fi
 
 # cleaning
-sudo apt autoremove -y
-sudo apt autoclean
-sudo apt clean
+# remove uninstalled packages
+# sudo pacman -Sc
+yay -Sc
 Exit
