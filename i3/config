@@ -283,10 +283,16 @@ bar {
 	}
 }
 
-# Startup programs
+# # Startup programs
+# Layout script
 exec_always --no-startup-id ~/.config/i3/column-layout
+# Notification Manager
 exec --no-startup-id dunst
-# exec exec_always compton &;
+# Automatically detect and apply profile
+exec_always --no-startup-id autorandr -c
+# compositor for xorg
+# exec_always picom -CGb;
+# clipboard manager
 exec --no-startup-id diodon &;
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -295,11 +301,11 @@ exec_always --no-startup-id nm-applet
 # bluetooth-manager-applet
 exec_always --no-startup-id blueman-applet
 
-# terminal
-exec i3-sensible-terminal
+# terminal on workspace 1
+exec --no-startup-id i3-msg 'workspace 1; exec i3-sensible-terminal'
 
 # wallpaper
-# exec_always feh --bg-scale /home/wheezy/Pictures/Wallpapers/hogwarts-7031x4000-burning-harry-potter-and-the-deathly-hallows-4k-8k-8930.jpg
+exec_always feh --bg-scale /home/wheezy/Pictures/Wallpapers/hogwarts-7031x4000-burning-harry-potter-and-the-deathly-hallows-4k-8k-8930.jpg
 
 
 
