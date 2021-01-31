@@ -1,4 +1,4 @@
-# scripts
+# scripts (for arch)
 This repo contains a template bash script and any personal scripts created for portability.
 
 Required symlinks and chmods are listed below.
