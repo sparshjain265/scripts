@@ -34,6 +34,9 @@ def layout(i3, event):
             if workspace is not None:
                 # if exactly 1 node (column) exists
                 if len(workspace.nodes) == 1:
+                    # set layout for workspace as splith
+                    if workspace.layout != "splith":
+                        workspace.command("splith")
                     # set layout for the node as splith
                     if workspace.nodes[0].layout != "splith":
                         workspace.nodes[0].command("splith")
@@ -49,6 +52,7 @@ def layout(i3, event):
                             for n in node.nodes:
                                 if n.focused:
                                     n.command("move right")
+                                    n.command("move right")
                                     if n.layout != "splitv":
                                         n.command("splitv")
                         # else nothing to do
@@ -63,5 +67,5 @@ def layout(i3, event):
 i3 = Connection()
 i3.on(Event.WINDOW_NEW, layout)
 i3.on(Event.WINDOW_CLOSE, layout)
-i3.on(Event.WINDOW_MOVE, layout)
+# i3.on(Event.WINDOW_MOVE, layout)
 i3.main()
