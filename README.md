@@ -38,3 +38,4 @@ Required symlinks and chmods are listed below.
 10. `feh` for background
 11. `blueman` for bluetooth manager
 12. [thefuck](https://github.com/nvbn/thefuck) coz why not ;)
+13. `ntfs-3g` for ntfs support

@@ -166,7 +166,7 @@ if [ $extended = 1 ]; then
 fi
 
 # cleaning
-# remove uninstalled packages
+# remove package files
 # sudo pacman -Sc
-yay -Sc
+yay -Scc
 Exit
