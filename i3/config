@@ -74,9 +74,13 @@ bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+x exec terminator
 
 # Enable Print Screen
+# screenshot and save full screen
 bindsym --release $mod+Print exec gnome-screenshot
+# screenshot and save selection
 bindsym --release Ctrl+Print exec gnome-screenshot -a
+# screenshot and clipboard full screen
 bindsym --release $mod+Shift+Print exec "gnome-screenshot -cf /tmp/test && cat /tmp/test | xclip -i -selection clipboard -target image/png"
+# screenshot and clipboard selection
 bindsym --release Ctrl+Shift+Print exec "gnome-screenshot -acf /tmp/test && cat /tmp/test | xclip -i -selection clipboard -target image/png"
 # bindsym --release $mod+Print exec shutter -s
 
@@ -305,7 +309,7 @@ exec_always --no-startup-id blueman-applet
 exec --no-startup-id i3-msg 'workspace 1; exec i3-sensible-terminal'
 
 # wallpaper
-exec_always feh --bg-scale /home/wheezy/Pictures/Wallpapers/hogwarts-7031x4000-burning-harry-potter-and-the-deathly-hallows-4k-8k-8930.jpg
+exec_always feh --bg-scale ~/.config/i3/images/i3.jpg
 
 
 
