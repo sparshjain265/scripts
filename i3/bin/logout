@@ -1,10 +1,13 @@
 #!/bin/bash
 # Manage logout with rofi
-option=`echo -e "suspend\nlock screen\nlogout\nreboot\npoweroff\nKill user $USER" | rofi -width 600 -dmenu -p system:`
+option=`echo -e "suspend\nhibernate\nlock screen\nlogout\nreboot\npoweroff\nKill user $USER" | rofi -width 600 -dmenu -p system:`
 case $option in
     suspend)
-        sudo  /usr/bin/systemctl syspend
+        sudo  /usr/bin/systemctl suspend
         ;;
+    hibernate)
+	sudo /usr/bin/systemctl hibernate
+	;;
     'lock screen')
         i3lock -i /home/koromicha/Pictures/linuxtux.png
         ;;

@@ -88,7 +88,7 @@ if [[ "$tx_rate" -gt 1048576 ]]; then
     tx_mbs=$(printf '%s' "`echo "scale=1; $tx_kib / 1024" | bc`")
   echo -n "↑${tx_mbs}M"
 else
-  echo -n "↑${tx_kib}K↑"
+  echo -n "↑${tx_kib}K"
 fi
 
 echo -n " "
@@ -104,7 +104,7 @@ echo -n " "
 rx_kib=$(( $rx_rate >> 10 ))
 if [[ "$rx_rate" -gt 1048576 ]]; then
     rx_mbs=$( printf '%s' "`echo "scale=1; $rx_kib / 1024" | bc`")
-  echo -n "$↓{rx_mbs}M"
+  echo -n "↓${rx_mbs}M"
 else
   echo -n "↓${rx_kib}K"
 fi
