@@ -12,7 +12,7 @@ Required symlinks and chmods are listed below.
 4. [i3](i3) -> ~/.config/i3
 5. [i3/i3blocks.conf](i3/i3blocks.conf) -> /etc/i3blocks.conf
 6. [dunst](dunst) -> ~/.config/dunst
-7. [pulseaudio-ctl](pulseaudio-ctl) -> ~/.config/pulseaudio-ctl
+7. [pulseaudio-ctl](pulseaudio-ctl) -> ~/.config/pulseaudio-ctl (Only if using `pulseaudio-ctl`)
 
 ## chmod +x
 
@@ -40,6 +40,4 @@ Required symlinks and chmods are listed below.
 11. `blueman` for bluetooth manager
 12. [thefuck](https://github.com/nvbn/thefuck) coz why not ;)
 13. `ntfs-3g` for ntfs support
-14. `pulseaudio`, `pulseaudio-alsa`, `pulseaudio-ctl` and `pavucontrol` for audio management
-
-
+14. `pulseaudio`, `pulseaudio-alsa`, <!-- `pulseaudio-ctl` --> and `pavucontrol` for audio management
