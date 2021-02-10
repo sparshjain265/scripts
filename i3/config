@@ -264,8 +264,8 @@ mode $power_mode {
     bindsym r         exec systemctl reboot 
     bindsym l         exec i3lock, mode "default"
     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
-    bindsym h         exec sudo systemctl hibernate 
-    bindsym s         exec sudo systemctl suspend
+    bindsym h         exec gksudo systemctl hibernate 
+    bindsym s         exec gksudo systemctl suspend
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
