@@ -223,6 +223,72 @@ bindsym $mod+Shift+F8 move container to workspace number $ws18
 bindsym $mod+Shift+F9 move container to workspace number $ws19
 bindsym $mod+Shift+F10 move container to workspace number $ws20
 
+set $i3_resurrect i3-resurrect
+
+# Save workspace mode.
+mode "save" {
+  bindsym 1 exec $i3_resurrect save -w $ws1
+  bindsym 2 exec $i3_resurrect save -w $ws2
+  bindsym 3 exec $i3_resurrect save -w $ws3
+  bindsym 4 exec $i3_resurrect save -w $ws4
+  bindsym 5 exec $i3_resurrect save -w $ws5
+  bindsym 6 exec $i3_resurrect save -w $ws6
+  bindsym 7 exec $i3_resurrect save -w $ws7
+  bindsym 8 exec $i3_resurrect save -w $ws8
+  bindsym 9 exec $i3_resurrect save -w $ws9
+  bindsym 0 exec $i3_resurrect save -w $ws10
+  bindsym F1 exec $i3_resurrect save -w $ws11
+  bindsym F2 exec $i3_resurrect save -w $ws12
+  bindsym F3 exec $i3_resurrect save -w $ws13
+  bindsym F4 exec $i3_resurrect save -w $ws14
+  bindsym F5 exec $i3_resurrect save -w $ws15
+  bindsym F6 exec $i3_resurrect save -w $ws16
+  bindsym F7 exec $i3_resurrect save -w $ws17
+  bindsym F8 exec $i3_resurrect save -w $ws18
+  bindsym F9 exec $i3_resurrect save -w $ws19
+  bindsym F10 exec $i3_resurrect save -w $ws20
+
+  # Back to normal: Enter, Escape, or s
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym m mode "default"
+  bindsym $mod+m mode "default"
+}
+
+bindsym $mod+m mode "save"
+
+# Restore workspace mode.
+mode "restore" {
+  bindsym 1 exec $i3_resurrect restore -w $ws1
+  bindsym 2 exec $i3_resurrect restore -w $ws2
+  bindsym 3 exec $i3_resurrect restore -w $ws3
+  bindsym 4 exec $i3_resurrect restore -w $ws4
+  bindsym 5 exec $i3_resurrect restore -w $ws5
+  bindsym 6 exec $i3_resurrect restore -w $ws6
+  bindsym 7 exec $i3_resurrect restore -w $ws7
+  bindsym 8 exec $i3_resurrect restore -w $ws8
+  bindsym 9 exec $i3_resurrect restore -w $ws9
+  bindsym 0 exec $i3_resurrect restore -w $ws10
+  bindsym F1 exec $i3_resurrect restore -w $ws11
+  bindsym F2 exec $i3_resurrect restore -w $ws12
+  bindsym F3 exec $i3_resurrect restore -w $ws13
+  bindsym F4 exec $i3_resurrect restore -w $ws14
+  bindsym F5 exec $i3_resurrect restore -w $ws15
+  bindsym F6 exec $i3_resurrect restore -w $ws16
+  bindsym F7 exec $i3_resurrect restore -w $ws17
+  bindsym F8 exec $i3_resurrect restore -w $ws18
+  bindsym F9 exec $i3_resurrect restore -w $ws19
+  bindsym F10 exec $i3_resurrect restore -w $ws20
+
+  # Back to normal: Enter, Escape, or n
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym n mode "default"
+  bindsym $mod+n mode "default"
+}
+
+bindsym $mod+n mode "restore"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)

@@ -41,3 +41,4 @@ Required symlinks and chmods are listed below.
 12. [thefuck](https://github.com/nvbn/thefuck) coz why not ;)
 13. `ntfs-3g` for ntfs support
 14. `pulseaudio`, `pulseaudio-alsa`, <!-- `pulseaudio-ctl` --> and `pavucontrol` for audio management
+15. `i3-resurrect` to save and restore layout
