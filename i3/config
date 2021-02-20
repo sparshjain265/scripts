@@ -385,11 +385,11 @@ exec_always --no-startup-id blueman-applet
 # firefox on ws1
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 
-# terminal on ws2
-exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal'
-
 # pavucontrol on ws11
 exec --no-startup-id i3-msg 'workspace 11; exec pavucontrol'
+
+# terminal on ws12
+exec --no-startup-id i3-msg 'workspace 12; exec i3-sensible-terminal'
 
 # wallpaper
 exec_always feh --bg-scale ~/.config/i3/images/i3.jpg
