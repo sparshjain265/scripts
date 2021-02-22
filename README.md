@@ -42,3 +42,4 @@ Required symlinks and chmods are listed below.
 13. `ntfs-3g` for ntfs support
 14. `pulseaudio`, `pulseaudio-alsa`, <!-- `pulseaudio-ctl` --> and `pavucontrol` for audio management
 15. `i3-resurrect` to save and restore layout
+16. `bluez-utils` for media keys in bluetooth headset
