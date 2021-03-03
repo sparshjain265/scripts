@@ -13,6 +13,7 @@ Required symlinks and chmods are listed below.
 5. [i3/i3blocks.conf](i3/i3blocks.conf) -> /etc/i3blocks.conf
 6. [dunst](dunst) -> ~/.config/dunst
 7. [pulseaudio-ctl](pulseaudio-ctl) -> ~/.config/pulseaudio-ctl (Only if using `pulseaudio-ctl`)
+8. [reflector](reflector) -> /etc/xdg/reflector
 
 ## chmod +x
 
@@ -43,4 +44,4 @@ Required symlinks and chmods are listed below.
 14. `pulseaudio`, `pulseaudio-alsa`, <!-- `pulseaudio-ctl` --> and `pavucontrol` for audio management
 15. `i3-resurrect` to save and restore layout
 16. `bluez-utils` for media keys in bluetooth headset
-
+17. `reflector` to update mirror list (use `mirror` as alias defined in bash_aliases)
