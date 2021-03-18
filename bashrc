@@ -110,3 +110,20 @@ export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\`parse_git_branch\` 
 eval $(thefuck --alias --enable-experimental-instant-mode)
 # you can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/wheezy/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/wheezy/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/wheezy/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/wheezy/anaconda3/bin:$PATH"
+    fi
+        export PATH="$PATH:/home/wheezy/anaconda3/bin"
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
