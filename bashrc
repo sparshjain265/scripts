@@ -122,7 +122,6 @@ else
     else
         export PATH="/home/wheezy/anaconda3/bin:$PATH"
     fi
-        export PATH="$PATH:/home/wheezy/anaconda3/bin"
 fi
 unset __conda_setup
 # <<< conda initialize <<<
