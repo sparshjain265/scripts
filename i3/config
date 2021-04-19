@@ -396,6 +396,9 @@ exec --no-startup-id i3-msg 'workspace 11; exec pavucontrol'
 # terminal on ws12
 exec --no-startup-id i3-msg 'workspace 12; exec i3-sensible-terminal'
 
+# thunderbird on ws13
+exec --no-startup-id i3-msg 'workspace 13; exec thunderbird'
+
 # wallpaper
 exec_always feh --bg-scale ~/.config/i3/images/i3.jpg
 
