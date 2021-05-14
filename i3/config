@@ -399,6 +399,18 @@ exec --no-startup-id i3-msg 'workspace 12; exec i3-sensible-terminal'
 # thunderbird on ws13
 exec --no-startup-id i3-msg 'workspace 13; exec thunderbird'
 
+# whatsapp on ws14
+exec --no-startup-id i3-msg 'workspace 14; exec whatsapp-nativefier'
+
+# facebook on ws15
+exec --no-startup-id i3-msg 'workspace 15; exec facebook-desktop-app'
+
+# instagram on ws16
+exec --no-startup-id i3-msg 'workspace 16; exec instagram-nativefier'
+
+# telegram on ws17
+exec --no-startup-id i3-msg 'workspace 17; exec telegram-desktop'
+
 # wallpaper
 exec_always feh --bg-scale ~/.config/i3/images/i3.jpg
 
