@@ -369,7 +369,7 @@ bar {
 	}
 }
 
-# # Startup programs
+# # Startup programs and Workspace assignments
 # Layout script
 exec_always --no-startup-id ~/.config/i3/column-layout
 # Notification Manager
@@ -388,28 +388,35 @@ exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
 
 # firefox on ws1
-exec --no-startup-id i3-msg 'workspace 1; exec firefox'
+assign [class="firefox"] $ws1
+exec --no-startup-id firefox
 
 # pavucontrol on ws11
-exec --no-startup-id i3-msg 'workspace 11; exec pavucontrol'
+assign [class="Pavucontrol"] $ws11
+exec --no-startup-id pavucontrol
 
 # terminal on ws12
 exec --no-startup-id i3-msg 'workspace 12; exec i3-sensible-terminal'
 
 # thunderbird on ws13
-exec --no-startup-id i3-msg 'workspace 13; exec thunderbird'
+assign [class="Thunderbird"] $ws13
+exec --no-startup-id thunderbird
 
 # whatsapp on ws14
-exec --no-startup-id i3-msg 'workspace 14; exec whatsapp-nativefier'
+assign [class="whatsapp"] $ws14
+exec --no-startup-id whatsapp-nativefier
 
 # facebook on ws15
-exec --no-startup-id i3-msg 'workspace 15; exec facebook-desktop-app'
+assign [class="facebook"] $ws15
+exec --no-startup-id facebook-desktop-app
 
 # instagram on ws16
-exec --no-startup-id i3-msg 'workspace 16; exec instagram-nativefier'
+assign [class="instagram"] $ws16
+exec --no-startup-id instagram-nativefier
 
 # telegram on ws17
-exec --no-startup-id i3-msg 'workspace 17; exec telegram-desktop'
+assign [class="Telegram"] $ws17
+exec --no-startup-id telegram-desktop
 
 # wallpaper
 exec_always feh --bg-scale ~/.config/i3/images/i3.jpg
