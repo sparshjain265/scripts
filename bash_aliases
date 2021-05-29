@@ -23,3 +23,5 @@ alias open="xdg-open"
 alias shit="fuck"
 
 alias mirror="sudo reflector --verbose --latest 100 --sort rate --save /etc/pacman.d/mirrorlist"
+
+alias discord='discord --no-sandbox'
