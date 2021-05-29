@@ -48,7 +48,7 @@ font pango:monospace 0
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec_always --no-startup-id xss-lock --ignore-sleep -- i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -398,27 +398,27 @@ exec --no-startup-id pavucontrol
 # terminal on ws12
 exec --no-startup-id i3-msg 'workspace 12; exec i3-sensible-terminal'
 
-# thunderbird on ws13
-assign [class="Thunderbird"] $ws13
-exec --no-startup-id thunderbird
+# mail on ws13
+for_window [title="Gmail"] move window to workspace $ws13
 
 # whatsapp on ws14
-assign [class="whatsapp"] $ws14
-exec --no-startup-id whatsapp-nativefier
+for_window [title="WhatsApp"] move window to workspace $ws14
 
 # facebook on ws15
-assign [class="facebook"] $ws15
-exec --no-startup-id facebook-desktop-app
+for_window [title="Facebook"] move window to workspace $ws15
 
 # instagram on ws16
-assign [class="instagram"] $ws16
-exec --no-startup-id instagram-nativefier
+for_window [title="Instagram"] move window to workspace $ws16
 
 # telegram on ws17
 assign [class="Telegram"] $ws17
 exec --no-startup-id telegram-desktop
 
+# discord on ws18
+assign [class="discord"] $ws18
+exec --no-startup-id discord --no-sandbox
+
 # wallpaper
-exec_always feh --bg-scale ~/.config/i3/images/i3.jpg
+exec_always --no-startup-id feh --bg-scale ~/.config/i3/images/i3.jpg
 
 
