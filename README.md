@@ -45,3 +45,4 @@ Required symlinks and chmods are listed below.
 15. `i3-resurrect` to save and restore layout
 16. `bluez-utils` for media keys in bluetooth headset
 17. `reflector` to update mirror list (use `mirror` as alias defined in bash_aliases)
+18. `polkit-gnome` for authentication agent
