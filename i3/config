@@ -328,6 +328,10 @@ exec_always --no-startup-id blueman-applet
 assign [class="firefox"] $ws1
 exec --no-startup-id firefox
 
+# streaming on ws2
+for_window [title="Netflix"] move window to workspace $ws2
+for_window [title="Prime"] move window to workspace $ws2
+
 # pavucontrol on ws11
 assign [class="Pavucontrol"] $ws11
 exec --no-startup-id pavucontrol
