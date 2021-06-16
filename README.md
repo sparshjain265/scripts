@@ -10,10 +10,11 @@ Required symlinks and chmods are listed below.
 2. [bash_aliases](bash_aliases) -> ~/.bash_aliases
 3. [update](update) -> ~/bin/update
 4. [i3](i3) -> ~/.config/i3
-5. [i3/i3blocks.conf](i3/i3blocks.conf) -> /etc/i3blocks.conf
+5. [i3/i3blocks.conf](i3/i3blocks.conf) -> ~/.i3blocks.conf
 6. [dunst](dunst) -> ~/.config/dunst
 7. [pulseaudio-ctl](pulseaudio-ctl) -> ~/.config/pulseaudio-ctl (Only if using `pulseaudio-ctl`)
 8. [reflector](reflector) -> /etc/xdg/reflector
+9. [profile](profile) -> ~/.profile
 
 ## chmod +x
 
