@@ -4,6 +4,6 @@ echo "$date_time"
 
 #Buttons Control
 case "$BLOCK_BUTTON" in
-    1) exec zenity --calendar
+    1) exec gnome-calendar
         ;;
 esac

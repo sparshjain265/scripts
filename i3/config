@@ -362,6 +362,7 @@ exec --no-startup-id discord --no-sandbox
 # floating windows
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [class="calendar"] floating enable
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale $HOME/.config/i3/images/i3.jpg
