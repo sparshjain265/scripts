@@ -5,8 +5,12 @@ API_KEY="552fc27ab99541ff493fa6be1348a9a7"
 
 # Check on http://openweathermap.org/find
 # CITY_ID="${BLOCK_INSTANCE}"
-LAT=29
-LON=77.7
+# Meerut
+# LAT=29
+# LON=77.7
+# Atlanta
+LAT=33.79
+LON=-84.4
 
 URGENT_LOWER=0
 URGENT_HIGHER=30
