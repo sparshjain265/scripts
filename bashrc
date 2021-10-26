@@ -107,7 +107,8 @@ function parse_git_dirty {
 export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\`parse_git_branch\` \[\033[01;32m\][\D{%Y-%m-%d} \t] \n\[\033[00m\]\$ "
 
 # thefuck
-eval $(thefuck --alias --enable-experimental-instant-mode)
+# eval $(thefuck --alias --enable-experimental-instant-mode)
+eval $(thefuck --alias)
 # you can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
 
