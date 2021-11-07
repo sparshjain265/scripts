@@ -168,5 +168,5 @@ fi
 # cleaning
 # remove package files
 # sudo pacman -Sc
-yay -Scc
+# yay -Scc
 Exit
