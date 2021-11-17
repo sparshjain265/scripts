@@ -15,6 +15,7 @@ Required symlinks and chmods are listed below.
 7. [pulseaudio-ctl](pulseaudio-ctl) -> ~/.config/pulseaudio-ctl (Only if using `pulseaudio-ctl`)
 8. [reflector](reflector) -> /etc/xdg/reflector
 9. [profile](profile) -> ~/.profile
+10. [nvim](nvim) -> ~/.config/nvim
 
 ## chmod +x
 
@@ -26,6 +27,7 @@ Required symlinks and chmods are listed below.
 
 1. Change rofi themes by running `rofi-theme-selector`
 2. Export display and icon themes by running `oomox`, then select them by running `lxappearance`
+3. `:PlugInstall` to install nvim plugins
 
 ## Dependencies/Packages/Nice-to-haves
 
@@ -47,3 +49,4 @@ Required symlinks and chmods are listed below.
 16. `bluez-utils` for media keys in bluetooth headset
 17. `reflector` to update mirror list (use `mirror` as alias defined in bash_aliases)
 18. `polkit-gnome` for authentication agent
+19. `vim-plug` for nvim plugin manager
