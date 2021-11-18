@@ -24,6 +24,11 @@ call plug#begin(g:plugged_home)
 
 	" Formater
 	Plug 'Chiel92/vim-autoformat'
+	
+	" Latex
+	Plug 'lervag/vimtex'
+	Plug 'Konfekt/FastFold'
+	Plug 'matze/vim-tex-fold'
 
 call plug#end()
 
@@ -91,16 +96,20 @@ augroup NCM2
 	" start a new line.
 	" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
+	" cycle through completion list with tab/shift+tab
+	inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+	inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+
 	" uncomment this block if you use vimtex for LaTex
-	" autocmd Filetype tex call ncm2#register_source({
-	" 	\ 'name': 'vimtex',
-	" 	\ 'priority': 8,
-	" 	\ 'scope': ['tex'],
-	" 	\ 'mark': 'tex',
-	" 	\ 'word_pattern': '\w+',
-	" 	\ 'complete_pattern': g:vimtex#re#ncm2,
-	" 	\ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-	" 	\ })
+	autocmd Filetype tex call ncm2#register_source({
+		\ 'name': 'vimtex',
+		\ 'priority': 8,
+		\ 'scope': ['tex'],
+		\ 'mark': 'tex',
+		\ 'word_pattern': '\w+',
+		\ 'complete_pattern': g:vimtex#re#ncm2,
+		\ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+		\ })
 augroup END
 
 " Ale
@@ -117,3 +126,12 @@ let g:airline_right_sep = ''
 let g:airline_extensions#ale#enabled = 1
 let airline#extensions#ale#error_symbol = 'E:'
 let airline#extensions#ale#warning_symbol = 'W:'
+
+" vimtex
+let g:tex_flavor = 'latex'
+let g:tex_conceal = ''
+let g:vimtex_fold_manual = 1
+" let g:vimtex_latexmk_continuous = 1
+let g:vimtex_compiler_progname = 'nvr'
+
+let g:vimtex_view_method = 'zathura'
