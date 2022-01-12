@@ -4,7 +4,7 @@ This repo contains a template bash script and any personal scripts created for p
 
 Required symlinks and chmods are listed below.
 
-## symlinks
+## symlinks `ln -s <source> <destination>`
 
 1. [bashrc](bashrc) -> ~/.bashrc
 2. [bash_aliases](bash_aliases) -> ~/.bash_aliases
@@ -16,6 +16,7 @@ Required symlinks and chmods are listed below.
 8. [reflector](reflector) -> /etc/xdg/reflector
 9. [profile](profile) -> ~/.profile
 10. [nvim](nvim) -> ~/.config/nvim
+11. [setOverleafGit](setOverleafGit) -> ~/bin/setOverleafGit
 
 ## chmod +x
 
