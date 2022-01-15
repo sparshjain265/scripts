@@ -373,7 +373,7 @@ exec --no-startup-id telegram-desktop
 
 # discord on ws18
 assign [class="discord"] $ws18
-exec --no-startup-id discord --no-sandbox
+exec --no-startup-id discord --no-sandbox --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy
 
 # floating windows
 for_window [window_role="pop-up"] floating enable
