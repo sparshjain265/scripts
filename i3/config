@@ -340,8 +340,8 @@ exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
 
 # firefox on ws1
-assign [class="firefox"] $ws1
-exec --no-startup-id firefox
+# assign [class="firefox"] $ws1
+exec --no-startup-id i3-msg 'workspace 1; exec prime-run firefox; workspace 1'
 
 # streaming on ws2
 for_window [title="KimCartoon"] move window to workspace $ws2
@@ -353,27 +353,28 @@ assign [class="Pavucontrol"] $ws11
 exec --no-startup-id pavucontrol
 
 # terminal on ws12
-exec --no-startup-id i3-msg 'workspace 12; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace 12; exec i3-sensible-terminal; workspace 1'
 
-# mail on ws13
-for_window [title="Gmail"] move window to workspace $ws13
+# # mail on ws13
+# for_window [title="Gmail"] move window to workspace $ws13
 
-# whatsapp on ws14
+# social media on ws14
+# whatsapp
 for_window [title="WhatsApp"] move window to workspace $ws14
-
-# facebook on ws15
-for_window [title="Facebook"] move window to workspace $ws15
-
-# instagram on ws16
-for_window [title="Instagram"] move window to workspace $ws16
+# facebook on ws14
+for_window [title="Facebook"] move window to workspace $ws14
+# instagram on ws14
+for_window [title="Instagram"] move window to workspace $ws14
+# discord on ws14
+for_window [title="Discord"] move window to workspace $ws14
 
 # telegram on ws17
 assign [class="Telegram"] $ws17
 exec --no-startup-id telegram-desktop
 
-# discord on ws18
-assign [class="discord"] $ws18
-exec --no-startup-id discord --no-sandbox --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy
+# # discord on ws18
+# assign [class="discord"] $ws18
+# exec --no-startup-id discord --no-sandbox --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy
 
 # floating windows
 for_window [window_role="pop-up"] floating enable
