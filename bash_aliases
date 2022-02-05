@@ -24,4 +24,7 @@ alias shit="fuck"
 
 alias mirror="sudo reflector --verbose --latest 100 --sort rate --save /etc/pacman.d/mirrorlist"
 
-alias discord='discord --no-sandbox'
+# alias discord='discord --no-sandbox'
+
+alias yay='paru'
+alias please='sudo'

@@ -35,6 +35,7 @@ Required symlinks and chmods are listed below.
 
 ## Dependencies/Packages/Nice-to-haves
 
+0. `paru` as AUR-helper (replaces `yay`)
 1. `lightdm` display manager for login
 2. `i3` window manager
 3. `rofi` for menus
