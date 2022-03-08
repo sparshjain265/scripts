@@ -8,8 +8,8 @@ call plug#begin(g:plugged_home)
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
-	" Better Visual Guide
-	Plug 'Yggdroot/indentLine'
+	" " Better Visual Guide
+	" Plug 'Yggdroot/indentLine'
 
 	" syntax check (python?)
 	Plug 'w0rp/ale'
@@ -129,8 +129,8 @@ let airline#extensions#ale#warning_symbol = 'W:'
 
 " vimtex
 let g:tex_flavor = 'latex'
-let g:tex_conceal = ''
-set conceallevel=0
+" let g:tex_conceal = ''
+" set conceallevel=0
 let g:vimtex_fold_manual = 1
 " let g:vimtex_latexmk_continuous = 1
 let g:vimtex_compiler_progname = 'nvr'

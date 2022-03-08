@@ -53,6 +53,10 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+  if [ -f /usr/share/bash-complete-alias/complete_alias ]; then
+	  . /usr/share/bash-complete-alias/complete_alias
+	  complete -F _complete_alias "${!BASH_ALIASES[@]}"
+  fi
 fi
 
 # Change shell prompt

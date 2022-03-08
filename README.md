@@ -55,3 +55,5 @@ Required symlinks and chmods are listed below.
 17. `reflector` to update mirror list (use `mirror` as alias defined in bash_aliases)
 18. `polkit-gnome` for authentication agent
 19. `vim-plug` for nvim plugin manager
+20. `bash-complete-alias` for bash completion on bash_aliases
+21. `autorandr` for automatic multi-monitor setup

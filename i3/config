@@ -313,6 +313,7 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # 	colors {
 # 		separator $transparent
 # 	}
+#       tray_output primary
 # }
 
 bar {
@@ -323,6 +324,8 @@ bar {
 	colors {
 		separator $transparent
 	}
+        
+        tray_output primary
 }
 
 # # Startup programs and Workspace assignments
@@ -333,7 +336,7 @@ exec --no-startup-id dunst
 # Automatically detect and apply profile
 exec_always --no-startup-id autorandr -c
 # compositor for xorg
-# exec_always picom -CGb;
+# exec_always DISPLAY=":0" picom -CGb;
 # clipboard manager
 exec --no-startup-id diodon &;
 #start the authentication agent
@@ -371,16 +374,16 @@ for_window [title="WhatsApp"] move window to workspace $ws14
 for_window [title="Facebook"] move window to workspace $ws14
 # instagram on ws14
 for_window [title="Instagram"] move window to workspace $ws14
-# discord on ws14
-for_window [title="Discord"] move window to workspace $ws14
+# # discord on ws14
+# for_window [title="Discord"] move window to workspace $ws14
 
 # telegram on ws17
 assign [class="Telegram"] $ws17
 exec --no-startup-id telegram-desktop
 
-# # discord on ws18
-# assign [class="discord"] $ws18
-# exec --no-startup-id discord --no-sandbox --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy
+# discord on ws18
+assign [class="discord"] $ws18
+exec --no-startup-id discord --no-sandbox --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy
 
 # floating windows
 for_window [window_role="pop-up"] floating enable
