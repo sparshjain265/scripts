@@ -57,3 +57,4 @@ Required symlinks and chmods are listed below.
 19. `vim-plug` for nvim plugin manager
 20. `bash-complete-alias` for bash completion on bash_aliases
 21. `autorandr` for automatic multi-monitor setup
+22. `fscrypt` to encrypt certain directories
