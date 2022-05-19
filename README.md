@@ -17,6 +17,7 @@ Required symlinks and chmods are listed below.
 9. [profile](profile) -> ~/.profile
 10. [nvim](nvim) -> ~/.config/nvim
 11. [setOverleafGit](setOverleafGit) -> ~/bin/setOverleafGit
+12. [inputrc](inputrc) -> ~/.inputrc
 
 ## chmod +x
 
@@ -30,8 +31,8 @@ Required symlinks and chmods are listed below.
 2. Export display and icon themes by running `oomox`, then select them by running `lxappearance`
 3. `:PlugInstall` to install nvim plugins
 4. The following for submodule ease in git
-	* git config --global alias.clone-all 'clone --recurse-submodules'
-	* git config --global alias.pull-all 'pull --recurse-submodules'
+ * git config --global alias.clone-all 'clone --recurse-submodules'
+ * git config --global alias.pull-all 'pull --recurse-submodules'
 
 ## Dependencies/Packages/Nice-to-haves
 
