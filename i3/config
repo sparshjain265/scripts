@@ -348,6 +348,10 @@ exec_always --no-startup-id nm-applet
 # bluetooth-manager-applet
 exec_always --no-startup-id blueman-applet
 
+# audio streaming fix
+# exec_always --no-startup-id pactl exit
+# exec_always --no-startup-id $HOME/.config/i3/bin/audioStreamFix
+
 # firefox on ws1
 # assign [class="firefox"] $ws1
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
