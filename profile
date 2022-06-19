@@ -2,6 +2,8 @@
 # ~/.bash_profile
 #
 
+xsettingsd &
+
 if [ -d "$HOME/bin" ] ; then
   PATH="$PATH:$HOME/bin"
 fi

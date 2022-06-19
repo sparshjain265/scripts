@@ -26,5 +26,7 @@ alias mirror="sudo reflector --verbose --latest 100 --sort rate --save /etc/pacm
 
 alias discord='discord --no-sandbox --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy'
 
+alias nautilus='GTK_THEME=oomox-DarkOnesk1 nautilus'
+
 alias yay='paru'
 alias please='sudo'
