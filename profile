@@ -15,3 +15,5 @@ fi
 if [ -d "/home/wheezy/anaconda3/bin" ]; then
   export PATH="$PATH:/home/wheezy/anaconda3/bin"
 fi
+
+export XDG_CONFIG_HOME="$HOME/.config"
