@@ -97,7 +97,7 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
 
         ```[bash]
         # pacman -S xf86-video-intel
-        # pacman -S nvidia nvidia-utils nvidia-settings lib32-nvidia-utils nvidia-prime
+        # pacman -S nvidia-dkms nvidia-utils nvidia-settings lib32-nvidia-utils nvidia-prime lib32-opencl-nvidia opencl-nvidia libvdpau lib32-libvdpau libxnvctrl vulkan-icd-loader lib32-vulkan-icd-loader vkd3d lib32-vkd3d opencl-headers opencl-clhpp vulkan-validation-layers lib32-vulkan-validation-layers
         ```
 
     2. Display Server - I use Xorg here, another alternative is Wayland.
@@ -140,11 +140,23 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
 7. Sound Drivers and utilities
 
     ```[bash]
-    # pacman -S alsa alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol helvum
+    # pacman -S alsa alsa-utils alsa-tools pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol helvum
     ```
 
-8. Other applications: firefox for browser, xdg-desktop-portal for good integration of sandboxed apps
+8. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome
 
     ```[bash]
-    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome
+    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man
+    $ paru -S visual-studio-code-bin google-chrome
     ```
+
+9. Power management with systemd: laptop events - see wiki
+
+    ```[bash]
+    # pacman -S acpid tlp
+    # systemctl enable tlp
+    $ paru -S tlpui
+
+10. Trackpad settings: modify `/etc/X11/xorg.conf.d/30-touchpad.conf` according to [30-touchpad.conf](xorg/30-touchpad.conf).
+
+11. Follow [README](README.md) for further customization.

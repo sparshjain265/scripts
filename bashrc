@@ -108,7 +108,7 @@ function parse_git_dirty {
 	fi
 }
 
-export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\`parse_git_branch\` \[\033[01;32m\][\D{%Y-%m-%d} \t] \n\[\033[00m\]\$ "
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\`parse_git_branch\` \[\033[01;32m\][\D{%Y-%m-%d} \t] \n\[\033[00m\]\$ "
 
 # thefuck
 # eval $(thefuck --alias --enable-experimental-instant-mode)
