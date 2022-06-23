@@ -99,6 +99,7 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
         # pacman -S xf86-video-intel
         # pacman -S nvidia-dkms nvidia-utils nvidia-settings lib32-nvidia-utils nvidia-prime lib32-opencl-nvidia opencl-nvidia libvdpau lib32-libvdpau libxnvctrl vulkan-icd-loader lib32-vulkan-icd-loader vkd3d lib32-vkd3d opencl-headers opencl-clhpp vulkan-validation-layers lib32-vulkan-validation-layers
         ```
+		Create update hook as described on wiki.
 
     2. Display Server - I use Xorg here, another alternative is Wayland.
 
@@ -159,4 +160,6 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
 
 10. Trackpad settings: modify `/etc/X11/xorg.conf.d/30-touchpad.conf` according to [30-touchpad.conf](xorg/30-touchpad.conf).
 
-11. Follow [README](README.md) for further customization.
+11. May want to install gnome DE for its useful softwares.
+
+12. Follow [README](README.md) for further customization.
