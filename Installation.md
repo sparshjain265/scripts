@@ -86,25 +86,25 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
 4. Install some useful tools
 
     ```[bash]
-    # pacman -S python pygmentize htop tmux bash-completion wget which lshw pacman-contrib terminator neovim git
+    # pacman -S python python-pip pygmentize htop tmux bash-completion wget which lshw pacman-contrib terminator neovim git github-cli
     ```
 
 5. Install `paru` - an AUR helper and a pacman wrapper. Also install `pkgstats` package to help arch devs with package info.
 
 6. GUI - Current laptop has a MUX switch and the following configuration only works in *hybrid* mode. Yet to figure out how to make it work in both *hybrid* and *dGPU* modes.
 
-    1. Display Driver - I have nvidia graphics card, if integrated, it may help to install integrated graphics driver as well - intel in my case.
+    1. Display Driver - I have nvidia graphics card
 
         ```[bash]
-        # pacman -S xf86-video-intel
-        # pacman -S nvidia-dkms nvidia-utils nvidia-settings lib32-nvidia-utils nvidia-prime lib32-opencl-nvidia opencl-nvidia libvdpau lib32-libvdpau libxnvctrl vulkan-icd-loader lib32-vulkan-icd-loader vkd3d lib32-vkd3d opencl-headers opencl-clhpp vulkan-validation-layers lib32-vulkan-validation-layers
+        # pacman -S nvidia nvidia-utils nvidia-settings lib32-nvidia-utils nvidia-prime
         ```
-		Create update hook as described on wiki.
+
+        Create update hook as described on wiki.
 
     2. Display Server - I use Xorg here, another alternative is Wayland.
 
         ```[bash]
-        # pacman -S xorg xorg-server xorg-apps xorg-xinit
+        # pacman -S xorg xorg-server xorg-apps xorg-xinit xterm
         ```
 
     3. Window Manager - I use i3, other options are sway or even full fledged DE like Gnome, KDE, Xfce.
@@ -128,13 +128,13 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     5. Additional fonts and icons
 
         ```[bash]
-        # pacman -S noto-fonts ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto ttf-font-awesome papirus-icon-theme
+        # pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto ttf-font-awesome papirus-icon-theme
         ```
 
     6. Additional tools
 
         ```[bash]
-        # pacman -S ranger rofi conky dmenu xdg-user-dirs
+        # pacman -S ranger rofi conky dmenu dunst xdg-user-dirs
         # xdg-user-dirs-update
         ```
 
@@ -160,6 +160,17 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
 
 10. Trackpad settings: modify `/etc/X11/xorg.conf.d/30-touchpad.conf` according to [30-touchpad.conf](xorg/30-touchpad.conf).
 
-11. May want to install gnome DE for its useful softwares.
+11. Bluetooth
 
-12. Follow [README](README.md) for further customization.
+    ```[bash]
+    # pacman -S blueman bluez-utils
+    # systemctl enable bluetooth blueman-mechanism
+    ```
+
+12. May want to install gnome DE for its useful softwares. May cause problems, only install if necessary. These are some gnome-applications that are useful and can be installed separately.
+
+    ```[bash]
+    # pacman -S gnome-calendar gnome-calculator polkit-gnome
+    ```
+
+13. Follow [README](README.md) for further customization.

@@ -57,5 +57,5 @@ Required symlinks and chmods are listed below.
 18. `polkit-gnome` for authentication agent
 19. `vim-plug` for nvim plugin manager
 20. `bash-complete-alias` for bash completion on bash_aliases
-21. `autorandr` for automatic multi-monitor setup
+21. `arandr` and `autorandr` for automatic multi-monitor setup
 22. `fscrypt` to encrypt certain directories
