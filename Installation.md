@@ -83,15 +83,16 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     # reflector --verbose --latest 100 --sort rate --save /etc/pacman.d/mirrorlist
     ```
 
-4. Install some useful tools
+4. Install some useful tools - pip pynvim is required for some nvim plugins - Install nvim plugins with :PlugInstall command
 
     ```[bash]
     # pacman -S python python-pip pygmentize htop tmux bash-completion wget which lshw pacman-contrib terminator neovim git github-cli
+    $ pip install pynvim
     ```
 
 5. Install `paru` - an AUR helper and a pacman wrapper. Also install `pkgstats` package to help arch devs with package info.
 
-6. GUI - Current laptop has a MUX switch and the following configuration only works in *hybrid* mode. Yet to figure out how to make it work in both *hybrid* and *dGPU* modes.
+6. GUI - Current laptop has a MUX switch and the following configuration only works in *hybrid* mode. Yet to figure out how to make it work in both *hybrid* and *dGPU* modes. (Somehow, the same setup works in both modes right now - and laptop display gives 240Hz refresh rate only with dGPU. Seems like intel GPU only supports 60Hz and nvidia GPU supports 60Hz and 240Hz)
 
     1. Display Driver - I have nvidia graphics card
 
@@ -104,7 +105,7 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     2. Display Server - I use Xorg here, another alternative is Wayland.
 
         ```[bash]
-        # pacman -S xorg xorg-server xorg-apps xorg-xinit xterm
+        # pacman -S xorg xorg-server xorg-apps xorg-xinit xorg-xinput xterm
         ```
 
     3. Window Manager - I use i3, other options are sway or even full fledged DE like Gnome, KDE, Xfce.
@@ -135,7 +136,7 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
 
         ```[bash]
         # pacman -S ranger rofi conky dmenu dunst xdg-user-dirs
-        # xdg-user-dirs-update
+        $ xdg-user-dirs-update
         ```
 
 7. Sound Drivers and utilities
@@ -144,14 +145,15 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     # pacman -S alsa alsa-utils alsa-tools pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol helvum
     ```
 
-8. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome
+8. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome, paru (to track via paru itself), oomox/themix + lxappearance for themes, zathura for pdf, gnome-screenshot + xclip for screenshots, calendar, calculator, polkit for authentication agent, i3ipc for column-layout script, acpilight for better brightness management, feh for background, thefuck coz why not, ntfs-3g for NTFS support, i3-resurrect to save and restore layout, vim-plug for vim/nvim plugin manager, bash-complete-alias for bash completion on aliases, arandr and autorandr for display setup, fscrypt to encrypt certain directories
 
     ```[bash]
-    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man
-    $ paru -S visual-studio-code-bin google-chrome
+    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man zathura gnome-screenshot xclip gnome-calendar gnome-calculator polkit-gnome acpilight feh ntfs-3g arandr autorandr fscrypt
+    $ paru -S paru visual-studio-code-bin google-chrome themix-full-git lxappearance thefuck i3-resurrect vim-plug bash-complete-alias
+    $ pip install i3ipc
     ```
 
-9. Power management with systemd: laptop events - see wiki
+9. Power management with systemd: laptop events - see wiki - use tlpui to change settings easily.
 
     ```[bash]
     # pacman -S acpid tlp
@@ -167,10 +169,8 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     # systemctl enable bluetooth blueman-mechanism
     ```
 
-12. May want to install gnome DE for its useful softwares. May cause problems, only install if necessary. These are some gnome-applications that are useful and can be installed separately.
+12. May want to install gnome DE for its useful softwares. May cause problems, only install if necessary.
 
-    ```[bash]
-    # pacman -S gnome-calendar gnome-calculator polkit-gnome
-    ```
+13. Using autorandr to automatically set up display resolution, refresh rates, and dpi based on detected monitor set up. The current config files can be found in [autorandr](autorandr).
 
-13. Follow [README](README.md) for further customization.
+Follow [README](README.md) for further customization.

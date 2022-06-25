@@ -333,8 +333,10 @@ bar {
 exec_always --no-startup-id $HOME/.config/i3/column-layout
 # Notification Manager
 exec --no-startup-id dunst
+# set dpi 
+exec xrandr --dpi 96
 # Automatically detect and apply profile
-exec_always --no-startup-id autorandr -c
+exec --no-startup-id autorandr -c
 # compositor for xorg
 # exec_always DISPLAY=":0" picom -CGb;
 # clipboard manager

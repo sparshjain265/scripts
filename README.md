@@ -53,7 +53,7 @@ Required symlinks and chmods are listed below.
 11. `blueman` for bluetooth manager
 12. [thefuck](https://github.com/nvbn/thefuck) coz why not ;)
 13. `ntfs-3g` for ntfs support
-14. `pulseaudio`, `pulseaudio-alsa`, <!-- `pulseaudio-ctl` --> and `pavucontrol` for audio management
+14. `alsa alsa-utils alsa-tools pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol helvum` for audio management
 15. `i3-resurrect` to save and restore layout
 16. `bluez-utils` for media keys in bluetooth headset
 17. `reflector` to update mirror list (use `mirror` as alias defined in bash_aliases)
