@@ -145,28 +145,29 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     # pacman -S alsa alsa-utils alsa-tools pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol helvum
     ```
 
-8. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome, paru (to track via paru itself), oomox/themix + lxappearance for themes, zathura for pdf, gnome-screenshot + xclip for screenshots, calendar, calculator, polkit for authentication agent, i3ipc for column-layout script, acpilight for better brightness management, feh for background, thefuck coz why not, ntfs-3g for NTFS support, i3-resurrect to save and restore layout, vim-plug for vim/nvim plugin manager, bash-complete-alias for bash completion on aliases, arandr and autorandr for display setup, fscrypt to encrypt certain directories
+8. Power management with systemd: laptop events - see wiki - use tlpui to change settings easily.
 
     ```[bash]
-    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man zathura gnome-screenshot xclip gnome-calendar gnome-calculator polkit-gnome acpilight feh ntfs-3g arandr autorandr fscrypt
-    $ paru -S paru visual-studio-code-bin google-chrome themix-full-git lxappearance thefuck i3-resurrect vim-plug bash-complete-alias
-    $ pip install i3ipc
-    ```
-
-9. Power management with systemd: laptop events - see wiki - use tlpui to change settings easily.
-
-    ```[bash]
-    # pacman -S acpid tlp
+    # pacman -S acpi acpid tlp
     # systemctl enable tlp
     $ paru -S tlpui
 
-10. Trackpad settings: modify `/etc/X11/xorg.conf.d/30-touchpad.conf` according to [30-touchpad.conf](xorg/30-touchpad.conf).
+9. Trackpad settings: modify `/etc/X11/xorg.conf.d/30-touchpad.conf` according to [30-touchpad.conf](xorg/30-touchpad.conf).
 
-11. Bluetooth
+10. Bluetooth
 
     ```[bash]
     # pacman -S blueman bluez-utils
     # systemctl enable bluetooth blueman-mechanism
+    ```
+
+11. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome, paru (to track via paru itself), oomox/themix + lxappearance for themes, zathura for pdf, gnome-screenshot + xclip for screenshots, calendar, calculator, polkit for authentication agent, i3ipc for column-layout script, acpilight for better brightness management, feh for background, thefuck coz why not, ntfs-3g for NTFS support, i3-resurrect to save and restore layout, vim-plug for vim/nvim plugin manager, bash-complete-alias for bash completion on aliases, arandr and autorandr for display setup, fscrypt to encrypt certain directories, mlocate for file find, sysstat for system stats
+
+    ```[bash]
+    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man zathura gnome-screenshot xclip gnome-calendar gnome-calculator polkit-gnome acpilight feh ntfs-3g arandr autorandr fscrypt mlocate sysstat
+    $ paru -S paru visual-studio-code-bin google-chrome themix-full-git lxappearance thefuck i3-resurrect vim-plug bash-complete-alias
+    $ pip install i3ipc
+    # updatedb
     ```
 
 12. May want to install gnome DE for its useful softwares. May cause problems, only install if necessary.
