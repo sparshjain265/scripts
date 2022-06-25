@@ -18,6 +18,9 @@ Required symlinks and chmods are listed below.
 10. [nvim](nvim) -> ~/.config/nvim
 11. [setOverleafGit](setOverleafGit) -> ~/bin/setOverleafGit
 12. [inputrc](inputrc) -> ~/.inputrc
+13. [gtk-2.0](gtk-2.0) -> ~/.config/gtk-2.0
+14. [gtk-3.0](gtk-3.0) -> ~/.config/gtk-3.0
+15. [gtk-4.0](gtk-4.0) -> ~/.config/gtk-4.0
 
 ## chmod +x
 
