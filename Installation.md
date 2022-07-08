@@ -161,17 +161,40 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     # systemctl enable bluetooth blueman-mechanism
     ```
 
-11. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome, paru (to track via paru itself), oomox/themix + lxappearance for themes, zathura for pdf, gnome-screenshot + xclip for screenshots, calendar, calculator, polkit for authentication agent, i3ipc for column-layout script, acpilight for better brightness management, feh for background, thefuck coz why not, ntfs-3g for NTFS support, i3-resurrect to save and restore layout, vim-plug for vim/nvim plugin manager, bash-complete-alias for bash completion on aliases, arandr and autorandr for display setup, fscrypt to encrypt certain directories, mlocate for file find, sysstat for system stats
+11. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome, discord, telegram, paru (to track via paru itself), oomox/themix + lxappearance for themes, zathura for pdf, gnome-screenshot + xclip for screenshots, calendar, calculator, polkit for authentication agent, i3ipc for column-layout script, acpilight for better brightness management, feh for background, thefuck coz why not, ntfs-3g for NTFS support, i3-resurrect to save and restore layout, vim-plug for vim/nvim plugin manager, bash-complete-alias for bash completion on aliases, arandr and autorandr for display setup, fscrypt to encrypt certain directories, mlocate for file find, sysstat for system stats, acpi_call-dkms lm-sensors asus-fan-control for laptop fan control, brightnessctl asus-kbd-backlight for backlit keyboard
 
     ```[bash]
-    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man zathura gnome-screenshot xclip gnome-calendar gnome-calculator polkit-gnome acpilight feh ntfs-3g arandr autorandr fscrypt mlocate sysstat
-    $ paru -S paru visual-studio-code-bin google-chrome themix-full-git lxappearance thefuck i3-resurrect vim-plug bash-complete-alias
+    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man zathura gnome-screenshot xclip gnome-calendar gnome-calculator polkit-gnome acpilight feh ntfs-3g arandr autorandr fscrypt mlocate sysstat lm-sensors acpi_call-dkms
+    $ paru -S paru visual-studio-code-bin google-chrome themix-full-git lxappearance thefuck i3-resurrect vim-plug bash-complete-alias asus-fan-control asus-kbd-backlight discord telegram-desktop
     $ pip install i3ipc
     # updatedb
+    # systemctl enable asus-kbd-backlight
     ```
 
 12. May want to install gnome DE for its useful softwares. May cause problems, only install if necessary.
 
 13. Using autorandr to automatically set up display resolution, refresh rates, and dpi based on detected monitor set up. The current config files can be found in [autorandr](autorandr).
+
+14. ASUS ROG specific (optional) - See [ASUS Linux](https://asus-linux.org/wiki/arch-guide/) for details.
+
+    1. Enable g14 repo in pacman.conf and run a full system update (`sudo pacman -Syu`).
+    2. Install `asusctl`, `supergfxctl` and `asusctltray-git` for customization, etc. Note that `asusctl` conflicts with `tlp` which is a dependency for `tlpui`, hence may need to remove that manually. `supergfxctl` is only useful in intel+nvidia graphics mode but not in dedicated nvidia graphics mode.
+
+        ```[bash]
+        # pacman -S asusctl supergfxctl
+        # systemctl enable --now power-profiles-daemon supergfxd
+        $ systemctl --user enable --now asusd-user asus-notify
+        $ paru -S asusctltray-git
+        ```
+
+    3. You may also want to install custom kernels for some driver fixes, hardware support, etc. If you are using custom kernel, use the `nvidia-dkms` package as the regular `nvidia` package works only with stock arch kernel. You may also need to update the corresponding **pacman hook** to update the initramfs after nvidia driver upgrade. Even more optional. All features work so far without using the custom kernel.
+
+        ```[bash]
+        # pacman -S linux-g14 linux-g14-headers nvidia-dkms
+        ```
+
+    4. Update your bootloader to give you option to boot into these kernels.
+
+    5. Create `~/.Xmodmap` file using `xmodmap -pke > ~/.Xmodmap` and add `XF86Game` to `keycode 248` to recognise `ASUS ROG Keystone` as game key.
 
 Follow [README](README.md) for further customization.

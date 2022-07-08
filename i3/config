@@ -71,14 +71,35 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Media Controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrevious exec playerctl previous
+bindsym XF86AudioPrev exec playerctl previous
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym XF86MonBrightnessDown exec xbacklight -5
 bindsym Ctrl+Shift+0 exec xbacklight +5
 bindsym Ctrl+Shift+9 exec xbacklight -5
+
+# Keyboard backlight controls
+# bindsym XF86KbdBrightnessUp brightnessctl --device='asus::kbd_backlight' set 0
+# bindsym XF86KbdBrightnessDown brightnessctl --device='asus::kbd_backlight' set 3
+bindsym XF86KbdBrightnessUp exec asus-kbd-backlight up
+bindsym XF86KbdBrightnessDown exec asus-kbd-backlight down
+# bindsym XF86KbdBrightnessUp exec asusctl -p
+# bindsym XF86KbdBrightnessDown exec asusctl -n
+
+# ASUS ROG profile toggle
+bindsym XF86Launch4 exec asusctl profile -n
+
+# ASUS ROG Keystone
+# bindsym XF86Game 
+
+# ASUS ROG AURA 
+# bindsym XF86Launch3
+
+# ASUS ROG Armory Crate 
+# bindsym XF86Launch1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -338,7 +359,7 @@ exec xrandr --dpi 96
 # Automatically detect and apply profile
 exec --no-startup-id autorandr -c
 # compositor for xorg
-# exec_always DISPLAY=":0" picom -CGb;
+# exec_always DISPLAY=":0" picom -b;
 # clipboard manager
 exec --no-startup-id diodon &;
 #start the authentication agent
@@ -354,6 +375,9 @@ exec_always --no-startup-id blueman-applet
 # exec_always --no-startup-id pactl exit
 # exec_always --no-startup-id $HOME/.config/i3/bin/audioStreamFix
 
+# asusctl tray
+exec --no-startup-id asusctltray
+
 # firefox on ws1
 # assign [class="firefox"] $ws1
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
@@ -362,6 +386,8 @@ exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 for_window [title="KimCartoon"] move window to workspace $ws2
 for_window [title="Netflix"] move window to workspace $ws2
 for_window [title="Prime"] move window to workspace $ws2
+for_window [title="HBO Max"] move window to workspace $ws2
+for_window [title="Disney+"] move window to workspace $ws2
 
 # pavucontrol on ws11
 assign [class="Pavucontrol"] $ws11

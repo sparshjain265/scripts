@@ -8,7 +8,7 @@ Required symlinks and chmods are listed below.
 
 1. [bashrc](bashrc) -> ~/.bashrc
 2. [bash_aliases](bash_aliases) -> ~/.bash_aliases
-3. [update](update) -> ~/bin/update
+3. [bin](bin) -> ~/bin
 4. [i3](i3) -> ~/.config/i3
 5. [i3/i3blocks.conf](i3/i3blocks.conf) -> ~/.i3blocks.conf
 6. [dunst](dunst) -> ~/.config/dunst
@@ -16,11 +16,11 @@ Required symlinks and chmods are listed below.
 8. [reflector](reflector) -> /etc/xdg/reflector
 9. [profile](profile) -> ~/.profile
 10. [nvim](nvim) -> ~/.config/nvim
-11. [setOverleafGit](setOverleafGit) -> ~/bin/setOverleafGit
-12. [inputrc](inputrc) -> ~/.inputrc
-13. [gtk-2.0](gtk-2.0) -> ~/.config/gtk-2.0
-14. [gtk-3.0](gtk-3.0) -> ~/.config/gtk-3.0
-15. [gtk-4.0](gtk-4.0) -> ~/.config/gtk-4.0
+11. [inputrc](inputrc) -> ~/.inputrc
+12. [gtk-2.0](gtk-2.0) -> ~/.config/gtk-2.0
+13. [gtk-3.0](gtk-3.0) -> ~/.config/gtk-3.0
+14. [gtk-4.0](gtk-4.0) -> ~/.config/gtk-4.0
+15. [picom](picom) -> ~/.config/picom
 
 ## chmod +x
 
