@@ -2,7 +2,7 @@
 # ~/.bash_profile
 #
 
-xsettingsd &
+# xsettingsd &
 
 if [ -d "$HOME/bin" ] ; then
   PATH="$PATH:$HOME/bin"
@@ -19,3 +19,5 @@ if [ -d "/home/wheezy/anaconda3/bin" ]; then
 fi
 
 export XDG_CONFIG_HOME="$HOME/.config"
+
+export QT_QPA_PLATFORMTHEME=qt5ct

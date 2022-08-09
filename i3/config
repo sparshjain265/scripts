@@ -89,6 +89,9 @@ bindsym XF86KbdBrightnessDown exec asus-kbd-backlight down
 # bindsym XF86KbdBrightnessUp exec asusctl -p
 # bindsym XF86KbdBrightnessDown exec asusctl -n
 
+# Touchpad Toggle
+bindsym XF86TouchpadToggle exec toggleTouchpad
+
 # ASUS ROG profile toggle
 bindsym XF86Launch4 exec asusctl profile -n
 
@@ -359,7 +362,8 @@ exec xrandr --dpi 96
 # Automatically detect and apply profile
 exec --no-startup-id autorandr -c
 # compositor for xorg
-# exec_always DISPLAY=":0" picom -b;
+# exec_always --no-startup-id DISPLAY=":0" picom -b;
+exec_always --no-startup-id xcompmgr &
 # clipboard manager
 exec --no-startup-id diodon &;
 #start the authentication agent
@@ -370,6 +374,8 @@ exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-ag
 exec_always --no-startup-id nm-applet
 # bluetooth-manager-applet
 exec_always --no-startup-id blueman-applet
+# media control from bluetooth devices via MPRIS
+exec_always --no-startup-id mpris-proxy &
 
 # audio streaming fix
 # exec_always --no-startup-id pactl exit
@@ -377,6 +383,13 @@ exec_always --no-startup-id blueman-applet
 
 # asusctl tray
 exec --no-startup-id asusctltray
+
+# playerctl daemon
+exec_always --no-startup-id playerctld daemon
+
+# uncomment if wifi or bluetooth doesn't automatically turn on after suspend/hibernate
+exec_always --no-startup-id nmcli networking on
+exec_always --no-startup-id bluetoothctl power on
 
 # firefox on ws1
 # assign [class="firefox"] $ws1

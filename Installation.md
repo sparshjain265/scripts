@@ -161,11 +161,11 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     # systemctl enable bluetooth blueman-mechanism
     ```
 
-11. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome, discord, telegram, paru (to track via paru itself), oomox/themix + lxappearance for themes, zathura for pdf, gnome-screenshot + xclip for screenshots, calendar, calculator, polkit for authentication agent, i3ipc for column-layout script, acpilight for better brightness management, feh for background, thefuck coz why not, ntfs-3g for NTFS support, i3-resurrect to save and restore layout, vim-plug for vim/nvim plugin manager, bash-complete-alias for bash completion on aliases, arandr and autorandr for display setup, fscrypt to encrypt certain directories, mlocate for file find, sysstat for system stats, acpi_call-dkms lm-sensors asus-fan-control for laptop fan control, brightnessctl asus-kbd-backlight for backlit keyboard
+11. Other applications: firefox, xdg-desktop-portal for good integration of sandboxed apps, libreoffice, transmission, vlc, neofetch, man for man-pages, vscode, google chrome, discord, telegram, paru (to track via paru itself), oomox/themix + lxappearance for themes, zathura for pdf, gnome-screenshot + xclip for screenshots, calendar, calculator, polkit for authentication agent, i3ipc for column-layout script, acpilight for better brightness management, feh for background, thefuck coz why not, ntfs-3g for NTFS support, i3-resurrect to save and restore layout, vim-plug for vim/nvim plugin manager, bash-complete-alias for bash completion on aliases, arandr and autorandr for display setup, fscrypt to encrypt certain directories, texlive-most texlive-most-doc texlive-lang and minted for latex, mlocate for file find, sysstat for system stats, acpi_call-dkms lm-sensors asus-fan-control for laptop fan control, brightnessctl asus-kbd-backlight for backlit keyboard
 
     ```[bash]
-    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man zathura gnome-screenshot xclip gnome-calendar gnome-calculator polkit-gnome acpilight feh ntfs-3g arandr autorandr fscrypt mlocate sysstat lm-sensors acpi_call-dkms
-    $ paru -S paru visual-studio-code-bin google-chrome themix-full-git lxappearance thefuck i3-resurrect vim-plug bash-complete-alias asus-fan-control asus-kbd-backlight discord telegram-desktop
+    # pacman -S firefox xdg-desktop-portal xdg-desktop-portal-gnome libreoffice transmission-gtk vlc neofetch man zathura gnome-screenshot xclip gnome-calendar gnome-calculator polkit-gnome acpilight feh ntfs-3g arandr autorandr fscrypt mlocate sysstat lm_sensors acpi_call-dkms texlive-most texlive-most-doc texlive-lang
+    $ paru -S paru visual-studio-code-bin google-chrome themix-full-git lxappearance thefuck i3-resurrect vim-plug bash-complete-alias asus-fan-control asus-kbd-backlight discord telegram-desktop minted
     $ pip install i3ipc
     # updatedb
     # systemctl enable asus-kbd-backlight
@@ -178,6 +178,7 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
 14. ASUS ROG specific (optional) - See [ASUS Linux](https://asus-linux.org/wiki/arch-guide/) for details.
 
     1. Enable g14 repo in pacman.conf and run a full system update (`sudo pacman -Syu`).
+
     2. Install `asusctl`, `supergfxctl` and `asusctltray-git` for customization, etc. Note that `asusctl` conflicts with `tlp` which is a dependency for `tlpui`, hence may need to remove that manually. `supergfxctl` is only useful in intel+nvidia graphics mode but not in dedicated nvidia graphics mode.
 
         ```[bash]
@@ -196,5 +197,32 @@ Now that we have our bare-bones arch-linux installation, let us configure it to 
     4. Update your bootloader to give you option to boot into these kernels.
 
     5. Create `~/.Xmodmap` file using `xmodmap -pke > ~/.Xmodmap` and add `XF86Game` to `keycode 248` to recognise `ASUS ROG Keystone` as game key.
+
+15. Gaming (optional)
+
+    1. Ensure the multilib repository is enabled in `/etc/pacman.conf` and update the system. Also ensure that `en_US.UTF-8` is enabled/generated to prevent unnecessary errors.
+
+    2. Install 32-bit libraries, sound drivers, and fonts.
+
+        ```[bash]
+        # pacman -S lib32-mesa lib32-nvidia-utils lib32-libpulse lib32-alsa-lib lib32-alsa-plugins lib32-openal lib32-fontconfig ttf-liberation 
+        ```
+
+    3. Install the gaming packages.
+
+        ```[bash]
+        # pacman -S wine lutris steam
+        $ paru -S heroic-games-launcher
+        ```
+
+    4. Enjoy!
+
+16. Other installed software - MS Teams, Zoom
+
+    ```[bash]
+    paru -S teams zoom
+    ```
+
+17. Run a native Windows installation inside virtual box (for more information, check [wiki](https://wiki.archlinux.org/title/VirtualBox#Run_a_native_Windows_installation_inside_VirtualBox))
 
 Follow [README](README.md) for further customization.
