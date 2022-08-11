@@ -21,6 +21,7 @@ Required symlinks and chmods are listed below.
 13. [gtk-3.0](gtk-3.0) -> ~/.config/gtk-3.0
 14. [gtk-4.0](gtk-4.0) -> ~/.config/gtk-4.0
 15. [picom](picom) -> ~/.config/picom
+16. [terminator](terminator) -> ~/.config/terminator
 
 ## chmod +x
 
