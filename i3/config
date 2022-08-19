@@ -424,7 +424,7 @@ for_window [title="Instagram"] move window to workspace $ws14
 
 # telegram on ws17
 assign [class="Telegram"] $ws17
-exec --no-startup-id telegram-desktop
+# exec --no-startup-id telegram-desktop
 
 # discord on ws18
 assign [class="discord"] $ws18
