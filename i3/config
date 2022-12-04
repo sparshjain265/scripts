@@ -383,6 +383,8 @@ exec_always --no-startup-id mpris-proxy &
 
 # asusctl tray
 # exec --no-startup-id asusctltray
+# rog-control-center
+exec --no-startup-id rog-control-center &
 
 # playerctl daemon
 exec_always --no-startup-id playerctld daemon
