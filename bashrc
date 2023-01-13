@@ -116,24 +116,24 @@ eval $(thefuck --alias)
 # you can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/wheezy/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/wheezy/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/wheezy/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/wheezy/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
 PATH="/home/padfoot/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/padfoot/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/padfoot/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/padfoot/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/padfoot/perl5"; export PERL_MM_OPT;
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/padfoot/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/padfoot/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/padfoot/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/padfoot/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

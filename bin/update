@@ -147,7 +147,7 @@ done
 
 # update AUR packages
 # yay -Syu
-paru -Syu
+paru -Syu --ignore electron16
 
 # if running in extended version
 if [ $extended = 1 ]; then
