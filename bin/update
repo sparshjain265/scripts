@@ -148,6 +148,8 @@ done
 # update AUR packages
 # yay -Syu
 paru -Syu --ignore electron16
+# cabal hackage package
+cabal update
 
 # if running in extended version
 if [ $extended = 1 ]; then
