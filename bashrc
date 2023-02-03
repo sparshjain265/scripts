@@ -122,6 +122,9 @@ PERL_LOCAL_LIB_ROOT="/home/padfoot/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB
 PERL_MB_OPT="--install_base \"/home/padfoot/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/padfoot/perl5"; export PERL_MM_OPT;
 
+# cabal path 
+export PATH="$HOME/.cabal/bin:$PATH"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/padfoot/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
