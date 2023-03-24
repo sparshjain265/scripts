@@ -1,13 +1,15 @@
 [global_config]
+  enabled_plugins = ,
 [keybindings]
   zoom_in = <Primary>plus
   zoom_out = <Primary>minus
-  new_tab = <Primary>t
+  new_tab = <Primary><Shift>t
   cycle_next = <Alt>Page_Down
   cycle_prev = <Shift><Alt>Page_Down
   close_term = <Primary>w
-  close_window = <Primary>q
+  close_window = ""
   next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
   switch_to_tab_1 = <Alt>1
   switch_to_tab_2 = <Alt>2
   switch_to_tab_3 = <Alt>3
@@ -18,11 +20,12 @@
   switch_to_tab_8 = <Alt>8
   switch_to_tab_9 = <Alt>9
   switch_to_tab_10 = <Alt>0
+  new_window = <Primary>n
+  new_terminator = ""
   preferences = <Primary>comma
 [profiles]
   [[default]]
     cursor_shape = ibeam
-    cursor_color = "#aaaaaa"
     font = Source Code Pro 15
     show_titlebar = False
     palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"

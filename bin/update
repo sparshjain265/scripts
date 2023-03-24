@@ -147,26 +147,28 @@ done
 
 # update AUR packages
 # yay -Syu
-paru -Syu --ignore electron16
-# cabal hackage package
-cabal update
+paru -Syu --ignore electron16 evdi-git
 
 # if running in extended version
 if [ $extended = 1 ]; then
    # update extra packagers here
 
-# not needed, thefuck package is insalled via pacman
-#    # update thefuck
-#    pip3 install thefuck --upgrade
+   # cabal hackage package
+   cabal update
 
-   # update veikk driver for linux
-   dir=$(pwd)
-   cd /home/wheezy/veikk/veikk-linux-driver
-   # git fetch
-   make
-   sudo make all install clean
-   sudo modprobe veikk
-   cd $dir
+   # not needed, thefuck package is insalled via pacman
+   #    # update thefuck
+   #    pip3 install thefuck --upgrade
+
+   # not needed, there is a nice package in the AUR now
+   # # update veikk driver for linux
+   # dir=$(pwd)
+   # cd /home/wheezy/veikk/veikk-linux-driver
+   # # git fetch
+   # make
+   # sudo make all install clean
+   # sudo modprobe veikk
+   # cd $dir
 fi
 
 # cleaning

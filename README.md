@@ -63,3 +63,4 @@ Required symlinks and chmods are listed below.
 20. `bash-complete-alias` for bash completion on bash_aliases
 21. `arandr` and `autorandr` for automatic multi-monitor setup
 22. `fscrypt` to encrypt certain directories
+23. `fzf`, `fzf-extras`, and `fzf-tab-completion-git` for fuzzy search (optional dependencies: `ctags`, `fasd`, `rl_custom_function-git`)

@@ -8,3 +8,8 @@ set page-completions off
 
 # disable alert bell
 set bell-style none
+
+# fzf-tab-completion
+$include function rl_custom_complete /usr/lib/librl_custom_complete.so
+C-i rl_custom_complete
+

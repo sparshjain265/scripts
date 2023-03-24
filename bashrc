@@ -128,6 +128,29 @@ export PATH="$HOME/.cabal/bin:$PATH"
 # rbenv init
 eval "$(rbenv init - bash)"
 
+# fzf settings
+
+if [ -f /usr/share/fzf/key-bindings.bash ]; then
+	. /usr/share/fzf/key-bindings.bash
+fi
+
+if [ -f /usr/share/fzf/completion.bash ]; then
+	. /usr/share/fzf/completion.bash
+fi
+
+if [ -f /usr/share/fzf/fzf-extras.bash ]; then
+	. /usr/share/fzf/fzf-extras.bash
+fi
+
+if [ -f /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]; then
+	. /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh
+	bind -x '"\t": fzf_bash_completion'
+fi
+
+export FZF_DEFAULT_OPTS="--cycle"
+# export FZF_COMPLETION_AUTO_COMMON_PREFIX=true
+# export FZF_COMPLETION_AUTO_COMMON_PREFIX_PART=true
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/padfoot/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
