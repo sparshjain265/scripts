@@ -2,62 +2,60 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
 HISTSIZE=1000
-HISTFILESIZE=2000
+SAVEHIST=1000
+setopt autocd extendedglob nomatch
+unsetopt beep
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/padfoot/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+# shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+# shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/zsh lesspipe)"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
+# ~/.zaliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.zaliases ]; then
+    . ~/.zaliases
 fi
 
+# not needed for zsh
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-  if [ -f /usr/share/bash-complete-alias/complete_alias ]; then
-	  . /usr/share/bash-complete-alias/complete_alias
-	  complete -F _complete_alias "${!BASH_ALIASES[@]}"
-  fi
-fi
+# if ! shopt -oq posix; then
+#   if [ -f /usr/share/bash-completion/bash_completion ]; then
+#     . /usr/share/bash-completion/bash_completion
+#   elif [ -f /etc/bash_completion ]; then
+#     . /etc/bash_completion
+#   fi
+#   if [ -f /usr/share/bash-complete-alias/complete_alias ]; then
+# 	  . /usr/share/bash-complete-alias/complete_alias
+# 	  complete -F _complete_alias "${!BASH_ALIASES[@]}"
+#   fi
+# fi
 
 # Change shell prompt
 
@@ -108,7 +106,12 @@ function parse_git_dirty {
 	fi
 }
 
-export PS1="\[\033[01;32m\][\D{%Y-%m-%d} \t] [\h \u]\[\033[00m\] \[\033[01;36m\]\w\`parse_git_branch\` \n\[\033[00m\]\$ "
+# export PS1="\[\033[01;32m\][\D{%Y-%m-%d} \t] [\h \u]\[\033[00m\] \[\033[01;36m\]\w\`parse_git_branch\` \n\[\033[00m\]\$ "
+autoload -Uz vcs_info
+precmd() {vcs_info}
+zstyle ':vcs_info:git:*' formats '[%b]'
+PROMPT="[%D{%Y-%m-%d %H:%M:%S}] [%m %n] %~ ${vcs_info_msg_0_}
+%# "
 
 # thefuck
 # eval $(thefuck --alias --enable-experimental-instant-mode)
@@ -126,26 +129,26 @@ PERL_MM_OPT="INSTALL_BASE=/home/padfoot/perl5"; export PERL_MM_OPT;
 export PATH="$HOME/.cabal/bin:$PATH"
 
 # rbenv init
-eval "$(rbenv init - bash)"
+eval "$(rbenv init - zsh)"
 
 # fzf settings
 
-if [ -f /usr/share/fzf/key-bindings.bash ]; then
-	. /usr/share/fzf/key-bindings.bash
+if [ -f /usr/share/fzf/key-bindings.zsh ]; then
+	. /usr/share/fzf/key-bindings.zsh
 fi
 
-if [ -f /usr/share/fzf/completion.bash ]; then
-	. /usr/share/fzf/completion.bash
+if [ -f /usr/share/fzf/completion.zsh ]; then
+	. /usr/share/fzf/completion.zsh
 fi
 
-if [ -f /usr/share/fzf/fzf-extras.bash ]; then
-	. /usr/share/fzf/fzf-extras.bash
+if [ -f /usr/share/fzf/fzf-extras.zsh ]; then
+	. /usr/share/fzf/fzf-extras.zsh
 fi
 
-if [ -f /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]; then
-	. /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh
-	bind -x '"\t": fzf_bash_completion'
-fi
+# if [ -f /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]; then
+# 	. /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh
+# 	bind -x '"\t": fzf_bash_completion'
+# fi
 
 # if [ -f /home/padfoot/.local/opt/fzf-obc/bin/fzf-obc.bash ]; then
 # 	. /home/padfoot/.local/opt/fzf-obc/bin/fzf-obc.bash
