@@ -147,7 +147,7 @@ done
 
 # update AUR packages
 # yay -Syu
-paru -Syu --ignore electron16,evdi-git
+paru -Syu --ignore evdi-git
 
 # if running in extended version
 if [ $extended = 1 ]; then
