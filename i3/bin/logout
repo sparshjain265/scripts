@@ -10,10 +10,11 @@ case $option in
 	    ;;
     'lock screen')
         i3lock -i ~/scripts/i3/images/hogwarts-burning.jpg
-        ;;
+        # /usr/bin/dm-tool switch-to-greeter
+		;;
     logout)
-        i3-nagbar -t warning -m 'Are you sure you  want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
-        ;;
+        i3-msg exit, mode "default"
+		;;
     reboot)
         /usr/bin/systemctl reboot
         ;;
