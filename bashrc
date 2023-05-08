@@ -108,6 +108,8 @@ function parse_git_dirty {
 	fi
 }
 
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 export PS1="\[\033[01;32m\][\D{%Y-%m-%d} \t] [\h \u]\[\033[00m\] \[\033[01;36m\]\w\`parse_git_branch\` \n\[\033[00m\]\$ "
 
 # thefuck
@@ -138,10 +140,6 @@ if [ -f /usr/share/fzf/completion.bash ]; then
 	. /usr/share/fzf/completion.bash
 fi
 
-if [ -f /usr/share/fzf/fzf-extras.bash ]; then
-	. /usr/share/fzf/fzf-extras.bash
-fi
-
 if [ -f /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]; then
 	. /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh
 	bind -x '"\t": fzf_bash_completion'
@@ -150,6 +148,10 @@ fi
 # if [ -f /home/padfoot/.local/opt/fzf-obc/bin/fzf-obc.bash ]; then
 # 	. /home/padfoot/.local/opt/fzf-obc/bin/fzf-obc.bash
 # fi
+
+if [ -f /usr/share/fzf/fzf-extras.bash ]; then
+	. /usr/share/fzf/fzf-extras.bash
+fi
 
 export FZF_DEFAULT_OPTS="--cycle"
 # export FZF_COMPLETION_AUTO_COMMON_PREFIX=true

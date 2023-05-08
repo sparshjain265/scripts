@@ -6,22 +6,24 @@ Required symlinks and chmods are listed below.
 
 ## symlinks `ln -s <source> <destination>`
 
-1. [bashrc](bashrc) -> ~/.bashrc
-2. [bash_aliases](bash_aliases) -> ~/.bash_aliases
-3. [bin](bin) -> ~/bin
-4. [i3](i3) -> ~/.config/i3
-5. [i3/i3blocks.conf](i3/i3blocks.conf) -> ~/.i3blocks.conf
-6. [dunst](dunst) -> ~/.config/dunst
-7. [pulseaudio-ctl](pulseaudio-ctl) -> ~/.config/pulseaudio-ctl (Only if using `pulseaudio-ctl`)
-8. [reflector](reflector) -> /etc/xdg/reflector
-9. [profile](profile) -> ~/.profile
-10. [nvim](nvim) -> ~/.config/nvim
-11. [inputrc](inputrc) -> ~/.inputrc
-12. [gtk-2.0](gtk-2.0) -> ~/.config/gtk-2.0
-13. [gtk-3.0](gtk-3.0) -> ~/.config/gtk-3.0
-14. [gtk-4.0](gtk-4.0) -> ~/.config/gtk-4.0
-15. [picom](picom) -> ~/.config/picom
-16. [terminator](terminator) -> ~/.config/terminator
+* [bash_profile](bash_profile) -> ~/.bash_profile
+* [bashrc](bashrc) -> ~/.bashrc
+* [bash_aliases](bash_aliases) -> ~/.bash_aliases
+* [bin](bin) -> ~/bin
+* [i3](i3) -> ~/.config/i3
+* [i3/i3blocks.conf](i3/i3blocks.conf) -> ~/.i3blocks.conf
+* [dunst](dunst) -> ~/.config/dunst
+* [pulseaudio-ctl](pulseaudio-ctl) -> ~/.config/pulseaudio-ctl (Only if using `pulseaudio-ctl`)
+* [reflector](reflector) -> /etc/xdg/reflector
+* [profile](profile) -> ~/.profile
+* [nvim](nvim) -> ~/.config/nvim
+* [inputrc](inputrc) -> ~/.inputrc
+* [gtk-2.0](gtk-2.0) -> ~/.config/gtk-2.0
+* [gtk-3.0](gtk-3.0) -> ~/.config/gtk-3.0
+* [gtk-4.0](gtk-4.0) -> ~/.config/gtk-4.0
+* [picom](picom) -> ~/.config/picom
+* [terminator](terminator) -> ~/.config/terminator
+* [ranger](ranger) -> ~/.config/ranger
 
 ## chmod +x
 
@@ -64,3 +66,4 @@ Required symlinks and chmods are listed below.
 21. `arandr` and `autorandr` for automatic multi-monitor setup
 22. `fscrypt` to encrypt certain directories
 23. `fzf`, `fzf-extras`, and `fzf-tab-completion-git` for fuzzy search (optional dependencies: `ctags`, `fasd`, `rl_custom_function-git`)
+24. `ranger` for tui file manager.

@@ -1,13 +1,20 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='/bin/ls --color=auto'
-    alias dir='/bin/dir --color=auto'
-    alias vdir='/bin/vdir --color=auto'
 
-    alias grep='/bin/grep --color=auto'
-    alias fgrep='/bin/fgrep --color=auto'
-    alias egrep='/bin/egrep --color=auto'
+# 	if [ -f /usr/bin/lsd ]; then
+# 		alias ls='/usr/bin/lsd --color=auto' # lsd for icons in ls
+# 	else 
+# 		alias ls='/usr/bin/ls --color=auto'
+# 	fi
+	alias ls='/usr/bin/ls --color=auto'
+
+	alias dir='/usr/bin/dir --color=auto'
+    alias vdir='/usr/bin/vdir --color=auto'
+
+    alias grep='/usr/bin/grep --color=auto'
+    alias fgrep='/usr/bin/fgrep --color=auto'
+    alias egrep='/usr/bin/egrep --color=auto'
 fi
 
 # some more ls aliases
