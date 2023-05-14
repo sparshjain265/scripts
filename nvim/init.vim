@@ -188,3 +188,9 @@ noremap <C-up> <C-w>k
 inoremap <C-up> <Esc><C-w>k==gi
 noremap <C-right> <C-w>l
 inoremap <C-right> <Esc><C-w>l==gi
+
+" jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
