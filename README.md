@@ -61,6 +61,7 @@ Required symlinks and chmods are listed below.
 * `ntfs-3g` for ntfs support
 * `alsa alsa-utils alsa-tools pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol helvum` for audio management
 * `i3-resurrect` to save and restore layout
+* `i3-swallow` for `swallow` command in i3
 * `bluez-utils` for media keys in bluetooth headset
 * `reflector` to update mirror list (use `mirror` as alias defined in bash_aliases)
 * `polkit-gnome` for authentication agent
@@ -68,6 +69,7 @@ Required symlinks and chmods are listed below.
 * `arandr` and `autorandr` for automatic multi-monitor setup
 * `fscrypt` to encrypt certain directories
 * `fzf`, `fzf-extras`, and `fzf-tab-completion-git` for fuzzy search (optional dependencies: `ctags`, `fasd`, `rl_custom_function-git`)
+* `kitty` for GPU rendering fast terminal emulator
 * `ranger` for tui file manager
 * `nvim` for neovim
 * `vim-plug` for nvim plugin manager
