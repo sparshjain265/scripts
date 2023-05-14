@@ -30,6 +30,14 @@
 | <F3> | Next Buffer/Tab |
 | <F2> | Previous Buffer/Tab |
 | <C-B> | Toggle File Explorer |
+| <C-/> | Toggle Comment |
+| <leader>cs | Comment with a pretty block format |
+| **Note** | **Sessions are useful but make sure you keep NERDTree closed in a session for safe recovery** |
+| :SLoad | Load a session |
+| :SSave | Save a session |
+| :SDelete | Delete a session |
+| :SClose | Close a session |
+| :mksession | Save a session in the current directory (helpful for quick session recovery with startify |
 
 | Key | Motion |
 | repeat action key (e.g. dd, yy) | Line |
@@ -87,8 +95,10 @@
 | <F3> | Next Buffer/Tab |
 | <F2> | Previous Buffer/Tab |
 | <C-B> | Toggle File Explorer |
+| <C-/> | Insert Comment |
 
 ## Visual Mode
 
 | Key | Action |
 | <motion> | Select <motion> |
+| <C-/> | Toggle Comment with pretty block formatting |
