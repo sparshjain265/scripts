@@ -38,6 +38,9 @@
 | :SDelete | Delete a session |
 | :SClose | Close a session |
 | :mksession | Save a session in the current directory (helpful for quick session recovery with startify |
+| <A-k>/<A-j> | Move current line up/down |
+| <C-h>/<C-j>/<C-k>/<C-l> | Move left/down/up/right between split panes |
+| <C-S-h>/<C-S-j>/<C-S-k>/<C-S-l> | Move split panes left/down/up/right |
 
 | Key | Motion |
 | repeat action key (e.g. dd, yy) | Line |
@@ -96,9 +99,15 @@
 | <F2> | Previous Buffer/Tab |
 | <C-B> | Toggle File Explorer |
 | <C-/> | Insert Comment |
+| <A-k>/<A-j> | Move current line up/down |
+| <C-h>/<C-j>/<C-k>/<C-l> | Move left/down/up/right between split panes |
+| <C-S-h>/<C-S-j>/<C-S-k>/<C-S-l> | Move split panes left/down/up/right |
 
 ## Visual Mode
 
 | Key | Action |
 | <motion> | Select <motion> |
 | <C-/> | Toggle Comment with pretty block formatting |
+| <A-k>/<A-j> | Move selected lines up/down |
+| <C-h>/<C-j>/<C-k>/<C-l> | Move left/down/up/right between split panes |
+| <C-S-h>/<C-S-j>/<C-S-k>/<C-S-l> | Move split panes left/down/up/right |
