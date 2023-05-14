@@ -6,7 +6,7 @@
   new_tab = <Primary><Shift>t
   cycle_next = <Alt>Page_Down
   cycle_prev = <Shift><Alt>Page_Down
-  close_term = <Primary>w
+  close_term = ""
   close_window = ""
   next_tab = <Primary>Tab
   prev_tab = <Primary><Shift>Tab
@@ -23,6 +23,7 @@
   new_window = <Primary>n
   new_terminator = ""
   preferences = <Primary>comma
+  help = ""
 [profiles]
   [[default]]
     cursor_shape = ibeam
