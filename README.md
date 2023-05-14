@@ -23,47 +23,52 @@ Required symlinks and chmods are listed below.
 * [gtk-4.0](gtk-4.0) -> ~/.config/gtk-4.0
 * [picom](picom) -> ~/.config/picom
 * [terminator](terminator) -> ~/.config/terminator
+* [kitty](kitty) -> ~/.config/kitty
 * [ranger](ranger) -> ~/.config/ranger
 
 ## chmod +x
 
-1. [i3/column-layout](i3/column-layout)
-2. [i3/bin/*](i3/bin)
-3. [i3/blocklets/*](i3/blocklets)
+* [i3/column-layout](i3/column-layout)
+* [i3/bin/*](i3/bin)
+* [i3/blocklets/*](i3/blocklets)
 
 ## Other settings
 
-1. Change rofi themes by running `rofi-theme-selector`
-2. Export display and icon themes by running `oomox`, then select them by running `lxappearance`
-3. `:PlugInstall` to install nvim plugins
-4. The following for submodule ease in git
+* Change rofi themes by running `rofi-theme-selector`
+* Export display and icon themes by running `oomox`, then select them by running `lxappearance`
+* `:PlugInstall` to install nvim plugins
+* `:PlugUpdate` to update the plugins and `:PlugUpgrade` to upgrade vim-plug itself
+* The following for submodule ease in git
     * git config --global alias.clone-all 'clone --recurse-submodules'
     * git config --global alias.pull-all 'pull --recurse-submodules'
 
 ## Dependencies/Packages/Nice-to-haves
 
-0. `paru` as AUR-helper (replaces `yay`)
-1. `lightdm` display manager for login
-2. `i3` window manager
-3. `rofi` for menus
-4. `dunst` for notification
-5. [oomox](https://github.com/themix-project/oomox) (`yay -S themix-full-git`) to get themes and `lxappearance` to apply the theme
-6. `gnome-screenshot` and `xclip` for screenshot
-7. [i3ipc](https://pypi.org/project/i3ipc/) (`pip3 install i3ipc`) for column-layout script
-8. `acpilight` for better brightness management
-9. `ttf-font-awesome` for font-awesome
-10. `feh` for background
-11. `blueman` for bluetooth manager
-12. [thefuck](https://github.com/nvbn/thefuck) coz why not ;)
-13. `ntfs-3g` for ntfs support
-14. `alsa alsa-utils alsa-tools pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol helvum` for audio management
-15. `i3-resurrect` to save and restore layout
-16. `bluez-utils` for media keys in bluetooth headset
-17. `reflector` to update mirror list (use `mirror` as alias defined in bash_aliases)
-18. `polkit-gnome` for authentication agent
-19. `vim-plug` for nvim plugin manager
-20. `bash-complete-alias` for bash completion on bash_aliases
-21. `arandr` and `autorandr` for automatic multi-monitor setup
-22. `fscrypt` to encrypt certain directories
-23. `fzf`, `fzf-extras`, and `fzf-tab-completion-git` for fuzzy search (optional dependencies: `ctags`, `fasd`, `rl_custom_function-git`)
-24. `ranger` for tui file manager.
+* `paru` as AUR-helper (replaces `yay`)
+* `lightdm` display manager for login
+* `i3` window manager
+* `rofi` for menus
+* `dunst` for notification
+* [oomox](https://github.com/themix-project/oomox) (`yay -S themix-full-git`) to get themes and `lxappearance` to apply the theme
+* `gnome-screenshot` and `xclip` for screenshot
+* [i3ipc](https://pypi.org/project/i3ipc/) (`pip3 install i3ipc`) for column-layout script
+* `acpilight` for better brightness management
+* `ttf-font-awesome` for font-awesome
+* `nerd-fonts` and `nerd-fonts-meta` for nerd fonts
+* `feh` for background
+* `blueman` for bluetooth manager
+* [thefuck](https://github.com/nvbn/thefuck) coz why not ;)
+* `ntfs-3g` for ntfs support
+* `alsa alsa-utils alsa-tools pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol helvum` for audio management
+* `i3-resurrect` to save and restore layout
+* `bluez-utils` for media keys in bluetooth headset
+* `reflector` to update mirror list (use `mirror` as alias defined in bash_aliases)
+* `polkit-gnome` for authentication agent
+* `bash-complete-alias` for bash completion on bash_aliases
+* `arandr` and `autorandr` for automatic multi-monitor setup
+* `fscrypt` to encrypt certain directories
+* `fzf`, `fzf-extras`, and `fzf-tab-completion-git` for fuzzy search (optional dependencies: `ctags`, `fasd`, `rl_custom_function-git`)
+* `ranger` for tui file manager
+* `nvim` for neovim
+* `vim-plug` for nvim plugin manager
+* `python-powerline` and `powerline-fonts` for patched fonts in nvim plugins

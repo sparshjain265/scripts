@@ -6,7 +6,7 @@ if [ -d "$HOME/.local/bin" ] ; then
   PATH="$PATH:$HOME/.local/bin"
 fi
 
-export TERMINAL="terminator"
+export TERMINAL="kitty"
 
 # if bash profile exists, call it else directly call bashrc
 if [ -f ~/.bash_profile ] ; then
