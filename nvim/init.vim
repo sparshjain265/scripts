@@ -42,7 +42,7 @@ nnoremap <nowait><silent> <F3> :bnext<CR>
 inoremap <nowait><silent> <F3> <ESC>:bnext<CR>
 
 " g plugged home
-let g:plugged_home = '~/.vim/plugged'
+let g:plugged_home = '~/.config/nvim/plugged'
 
 " Plugins List
 call plug#begin(g:plugged_home)
@@ -50,8 +50,8 @@ call plug#begin(g:plugged_home)
     Plug 'romainl/vim-cool'
 
     " Snippets
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
+    " Plug 'SirVer/ultisnips'
+    " Plug 'honza/vim-snippets'
 
     " Pop-up menus for auto-completion
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -137,13 +137,36 @@ let g:startify_session_persistence = 1
 " Sort sessions by modification time
 let g:startify_session_sort = 1
 
-" Use tab to trigger completion 
+" Autocomplete configuration
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+
+" Convenient Keybindings
 " Move line/selected block as in vscode
-nnoremap <A-j> :m .+1<CR>==gn
-nnoremap <A-k> :m .-2<CR>==gn
-nnoremap <A-down> :m .+1<CR>==gn
-nnoremap <A-up> :m .-2<CR>==gn
+nnoremap <A-j> :m .+1<CR>
+nnoremap <A-k> :m .-2<CR>
+nnoremap <A-down> :m .+1<CR>
+nnoremap <A-up> :m .-2<CR>
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 inoremap <A-down> <Esc>:m .+1<CR>==gi

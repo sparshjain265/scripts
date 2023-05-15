@@ -24,3 +24,16 @@ mps
 colorspace
 termguicolors
 powerline
+vscode
+autocmd
+g
+nnoremap
+nowait
+nohlsearch
+inoremap
+preservim
+nerdtree
+NERDTree
+Startify
+autoload
+g
