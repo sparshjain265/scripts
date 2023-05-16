@@ -35,11 +35,15 @@ set cursorlineopt=number            " highlight only the line number of the curs
 set ttyfast                         " speed up scrolling
 " set spell                         " enable spell check
 
+" Sane way of splitting
+set splitright
+set splitbelow
+
 " Move to prev/next buffers
 nnoremap <nowait><silent> <F2> :bprevious<CR>
-inoremap <nowait><silent> <F2> <ESC>:bprevious<CR>
+inoremap <nowait><silent> <F2> <ESC>:bprevious<CR>i
 nnoremap <nowait><silent> <F3> :bnext<CR>
-inoremap <nowait><silent> <F3> <ESC>:bnext<CR>
+inoremap <nowait><silent> <F3> <ESC>:bnext<CR>i
 
 " g plugged home
 let g:plugged_home = '~/.config/nvim/plugged'
@@ -63,6 +67,9 @@ call plug#begin(g:plugged_home)
     " Plug 'preservim/nerdtree'
     Plug 'scrooloose/nerdtree'
 
+    " Tagbar to browse a file and get an overview of its structure
+    Plug 'preservim/tagbar'
+
     " Commenter
     Plug 'preservim/nerdcommenter'
 
@@ -81,7 +88,7 @@ call plug#end()
 
 " color scheme
 let base16colorspace=256            " Access colors present in 256 colorspace
-set termguicolors                 " Brighter colors if terminal supports
+set termguicolors                   " Brighter colors if terminal supports
 
 " show opened buffers as tabs
 let g:airline#extensions#tabline#enabled = 1
@@ -90,11 +97,22 @@ let g:airline_powerline_fonts = 1
 
 " Toggle File Explorer
 nnoremap <nowait><silent> <C-B> :NERDTreeToggle<CR>
-inoremap <nowait><silent> <C-B> <ESC>:NERDTreeToggle<CR>
+" inoremap <nowait><silent> <C-B> <ESC>:NERDTreeToggle<CR>
 
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" Toggle Tagbar
+nnoremap <F8> :TagbarToggle fj<CR>
+
+augroup MyNeovimBuffers
+    autocmd!
+
+    " If another buffer tries to replace NERDTree, put it in the right window, and bring back NERDTree.
+    autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+                \ let bufnerd=bufnr() | buffer# | execute "normal! \<C-W>l" | execute 'buffer'.bufnerd | endif
+
+    " If another buffer tries to replace Tagbar, put it in the left window, and bring back Tagbar.
+    autocmd BufEnter * if bufname('#') =~ 'Tagbar' && bufname('%') !~ 'Tagbar' && winnr('$') > 1 |
+                \ let buftag=bufnr() | buffer# | execute "normal! \<C-W>h" | execute 'buffer'.buftag | endif
+augroup END
 
 " Comment related setup
 " The default mappings are horrible
@@ -133,8 +151,8 @@ let g:startify_lists = [
           \ ]
 " Relative paths
 let g:startify_relative_path = 1
-" close nerdtree before saving a session
-let g:startify_session_before_save = ['silent! tabdo NERDTreeClose' ]
+" close nerdtree and tagbar before saving a session
+let g:startify_session_before_save = ['silent! tabdo NERDTreeClose', 'silent! tabdo TagbarClose' ]
 " for session autoload feature
 let g:startify_session_autoload = 1
 let NERDTreeHijackNetrw = 0
@@ -166,7 +184,6 @@ function! CheckBackspace() abort
 endfunction
 
 
-
 " Convenient Keybindings
 " Move line/selected block as in vscode
 nnoremap <A-j> :m .+1<CR>
@@ -183,24 +200,16 @@ vnoremap <A-down> :m '>+1<CR>gv=gv
 vnoremap <A-up> :m '<-2<CR>gv=gv
 
 " move split panes to left/down/up/right in normal mode
-noremap <C-A-h> <C-W>H
-inoremap <C-A-h> <Esc><C-W>H==gi
-noremap <C-A-j> <C-W>J
-inoremap <C-A-j> <Esc><C-W>J==gi
-noremap <C-A-k> <C-W>K
-inoremap <C-A-k> <Esc><C-W>K==gi
-noremap <C-A-l> <C-W>L
-inoremap <C-A-l> <Esc><C-W>L==gi
-noremap <C-A-left> <C-W>H
-inoremap <C-A-left> <Esc><C-W>H==gi
-noremap <C-A-down> <C-W>J
-inoremap <C-A-down> <Esc><C-W>J==gi
-noremap <C-A-up> <C-W>K
-inoremap <C-A-up> <Esc><C-W>K==gi
-noremap <C-A-right> <C-W>L
-inoremap <C-A-right> <Esc><C-W>L==gi
+nnoremap <C-A-h> <C-W>H
+nnoremap <C-A-j> <C-W>J
+nnoremap <C-A-k> <C-W>K
+nnoremap <C-A-l> <C-W>L
+nnoremap <C-A-left> <C-W>H
+nnoremap <C-A-down> <C-W>J
+nnoremap <C-A-up> <C-W>K
+nnoremap <C-A-right> <C-W>L
 
-" move left/down/up/right between split panes 
+" move left/down/up/right between split panes in normal/insert/visual mode
 noremap <C-h> <C-w>h
 inoremap <C-h> <Esc><C-w>h==gi
 noremap <C-j> <C-w>j
@@ -219,21 +228,37 @@ noremap <C-right> <C-w>l
 inoremap <C-right> <Esc><C-w>l==gi
 
 " jump to the last position when reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
-endif
+augroup MyNeovimReopen
+    autocmd!
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal! g'\"" | endif 
+augroup END
 
-" Open terminal below
-noremap <C-`> :split<CR><C-W>J:terminal<CR>i
-inoremap <C-`> :split<CR><C-W>J:terminal<CR>i
+" Open terminal below from normal mode
+nnoremap <C-`> :split<CR><C-w>J:terminal<CR>i
+" map <Esc> to exit terminal mode and enter normal mode 
+tnoremap <Esc> <C-\><C-n>
 
-" " Automatic commands on terminal
-" augroup TerminalEnter
-    " autocmd!
-    " " Enter edit more on terminal enter 
-    " autcmd WinEnter term://* :startinsert
-    " " Autoresize terminal window 
-    " autocmd WinLeave term://* :resize 1
-    " autocmd WinEnter term://* :resize 10
-" augroup END
+" map ctrl++/- to resize windows (vertically) from normal mode
+nnoremap <C-S-=> <C-w><C-+>
+nnoremap <C-kPlus> <C-w><C-+>
+nnoremap <C--> <C-w><C-->
+nnoremap <C-kMinus> <C-w><C-->
+
+" map ctrl+,/. to resize windows (horizontally) from normal mode
+nnoremap <C-,> <C-w><C-<>
+nnoremap <C-.> <C-w><C->>
+
+" map ctrl+0 to reset window sizes
+nnoremap <C-0> <C-w><C-=>
+nnoremap <C-k0> <C-w><C-=>
+
+" Automatic commands on terminal
+augroup MyNeovimTerminal
+    autocmd!
+    " Enter edit more on terminal enter 
+    autocmd TermEnter *  startinsert
+    " Autoresize terminal window 
+    autocmd TermLeave *  resize 1
+    autocmd TermEnter *  resize 10
+augroup END

@@ -3,6 +3,10 @@
 ## Normal Mode 
 
 | Key | Action |
+| :help <term> | Shows help (documentation) about <term> |
+| :w[a] | Write (Save) [all] buffer[s] |
+| :q[a] | Quit [all] pane[s] |
+| :wq[a] | Write and Quit |
 | y<motion> | Yank (Copy) |
 | d<motion> | Delete (Cut) |
 | c<motion> | Change (Delete and insert mode) |
@@ -31,6 +35,7 @@
 | <F2> | Previous Buffer/Tab |
 | <C-B> | Toggle File Explorer |
 | <C-/> | Toggle Comment |
+| <leader>ca | Add comment at the end of the current line and enter insert mode |
 | <leader>cs | Comment with a pretty block format |
 | **Note** | **Sessions are useful but make sure you keep NERDTree closed in a session for safe recovery** |
 | :SLoad | Load a session |
@@ -40,7 +45,12 @@
 | :mksession | Save a session in the current directory (helpful for quick session recovery with startify |
 | <A-k>/<A-j> | Move current line up/down |
 | <C-h>/<C-j>/<C-k>/<C-l> | Move left/down/up/right between split panes |
-| <C-S-h>/<C-S-j>/<C-S-k>/<C-S-l> | Move split panes left/down/up/right |
+| <C-A-h>/<C-A-j>/<C-A-k>/<C-A-l> | Move split panes left/down/up/right |
+| <C-+>/<C--> | Increase/Decrease the size of a split pane vertically |
+| <C-.>/<C-,> | Increase/Decrease the size of a split pane horizontally |
+| <C-0> | Reset window sizes |
+| <C-`> | Open terminal below (like vscode) |
+| <F8> | Toggle Tagbar |
 
 | Key | Motion |
 | repeat action key (e.g. dd, yy) | Line |
@@ -94,20 +104,24 @@
 
 | Key | Action |
 | <C-x>s | Show menu of suggested spellings |
-| <C-L> | Clear search highlight |
 | <F3> | Next Buffer/Tab |
 | <F2> | Previous Buffer/Tab |
-| <C-B> | Toggle File Explorer |
 | <C-/> | Insert Comment |
+| <y/d/c>s<motion><bracket/tag> | Insert/Delete/Change the surrounding <bracket/tag> of <motion> |
 | <A-k>/<A-j> | Move current line up/down |
 | <C-h>/<C-j>/<C-k>/<C-l> | Move left/down/up/right between split panes |
-| <C-S-h>/<C-S-j>/<C-S-k>/<C-S-l> | Move split panes left/down/up/right |
 
 ## Visual Mode
 
 | Key | Action |
 | <motion> | Select <motion> |
 | <C-/> | Toggle Comment with pretty block formatting |
+| <y/d/c>s<motion><bracket/tag> | Insert/Delete/Change the surrounding <bracket/tag> of <motion> |
 | <A-k>/<A-j> | Move selected lines up/down |
 | <C-h>/<C-j>/<C-k>/<C-l> | Move left/down/up/right between split panes |
-| <C-S-h>/<C-S-j>/<C-S-k>/<C-S-l> | Move split panes left/down/up/right |
+
+## Terminal Mode 
+
+| Key | Action |
+| <Esc> | Go to normal mode |
+| <C-\><C-n> | Go to normal mode |
