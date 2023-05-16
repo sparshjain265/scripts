@@ -21,9 +21,9 @@
 | :s/<pattern>/<substitute>/g | Search and substitute all occurrences of <pattern> with <substitute> in the current line |
 | :s/<pattern>/<substitute>/gc | Highlight all occurrences of <pattern> in the current line and ask for each option one by one to substitute with <substitute> |
 | :%s/.../.../.. | Substitute actions in the whole file instead of just the current line |
-| <C-L> | Clear search highlight |
 | >> | Indent towards right |
 | << | Indent towards left |
+| <y/d/c>s<motion><bracket/tag> | Insert/Delete/Change the surrounding <bracket/tag> of <motion> |
 | <C-O> | Go to previous position, before 'jump' |
 | <C-I> | Go to next position, after 'jump' |
 | :ju[mps] | Print the 'jump' list |

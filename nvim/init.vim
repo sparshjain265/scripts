@@ -48,6 +48,9 @@ let g:plugged_home = '~/.config/nvim/plugged'
 call plug#begin(g:plugged_home)
     " Disable search highlighting once done
     Plug 'romainl/vim-cool'
+    
+    " Quickly surround with brackets and more...
+    Plug 'tpope/vim-surround'
 
     " Snippets
     " Plug 'SirVer/ultisnips'
@@ -65,6 +68,9 @@ call plug#begin(g:plugged_home)
 
     " Fancy start screen
     Plug 'mhinz/vim-startify'
+
+    " Terminal
+    " Plug 'tc50cal/vim-terminal'
 
     " UI Related
     Plug 'chriskempson/base16-vim'
@@ -177,22 +183,22 @@ vnoremap <A-down> :m '>+1<CR>gv=gv
 vnoremap <A-up> :m '<-2<CR>gv=gv
 
 " move split panes to left/down/up/right in normal mode
-noremap <C-S-h> <C-W>H
-inoremap <C-S-h> <Esc><C-W>H==gi
-noremap <C-S-j> <C-W>J
-inoremap <C-S-j> <Esc><C-W>J==gi
-noremap <C-S-k> <C-W>K
-inoremap <C-S-k> <Esc><C-W>K==gi
-noremap <C-S-l> <C-W>L
-inoremap <C-S-l> <Esc><C-W>L==gi
-noremap <C-S-left> <C-W>H
-inoremap <C-S-left> <Esc><C-W>H==gi
-noremap <C-S-down> <C-W>J
-inoremap <C-S-down> <Esc><C-W>J==gi
-noremap <C-S-up> <C-W>K
-inoremap <C-S-up> <Esc><C-W>K==gi
-noremap <C-S-right> <C-W>L
-inoremap <C-S-right> <Esc><C-W>L==gi
+noremap <C-A-h> <C-W>H
+inoremap <C-A-h> <Esc><C-W>H==gi
+noremap <C-A-j> <C-W>J
+inoremap <C-A-j> <Esc><C-W>J==gi
+noremap <C-A-k> <C-W>K
+inoremap <C-A-k> <Esc><C-W>K==gi
+noremap <C-A-l> <C-W>L
+inoremap <C-A-l> <Esc><C-W>L==gi
+noremap <C-A-left> <C-W>H
+inoremap <C-A-left> <Esc><C-W>H==gi
+noremap <C-A-down> <C-W>J
+inoremap <C-A-down> <Esc><C-W>J==gi
+noremap <C-A-up> <C-W>K
+inoremap <C-A-up> <Esc><C-W>K==gi
+noremap <C-A-right> <C-W>L
+inoremap <C-A-right> <Esc><C-W>L==gi
 
 " move left/down/up/right between split panes 
 noremap <C-h> <C-w>h
@@ -217,3 +223,17 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+" Open terminal below
+noremap <C-`> :split<CR><C-W>J:terminal<CR>i
+inoremap <C-`> :split<CR><C-W>J:terminal<CR>i
+
+" " Automatic commands on terminal
+" augroup TerminalEnter
+    " autocmd!
+    " " Enter edit more on terminal enter 
+    " autcmd WinEnter term://* :startinsert
+    " " Autoresize terminal window 
+    " autocmd WinLeave term://* :resize 1
+    " autocmd WinEnter term://* :resize 10
+" augroup END
