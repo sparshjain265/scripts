@@ -50,6 +50,7 @@ let g:plugged_home = '~/.config/nvim/plugged'
 
 " Plugins List
 call plug#begin(g:plugged_home)
+
 " Disable search highlighting once done
 Plug 'romainl/vim-cool'
 
@@ -60,7 +61,7 @@ Plug 'tpope/vim-surround'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 
-" Pop-up menus for auto-completion
+" Pop-up menus for auto-completion - needs lots of configuration
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " File explorer
@@ -79,14 +80,21 @@ Plug 'mg979/vim-visual-multi'
 " Fancy start screen
 Plug 'mhinz/vim-startify'
 
+" Sudo access after opening nvim
+Plug 'lambdalisue/suda.vim'
+
 " Terminal - not required since the built-in terminal is good enough
 " Plug 'tc50cal/vim-terminal'
+
+" CSS color preview
+Plug 'ap/vim-css-color'
 
 " UI Related
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 " Multi-Cursor support related config
@@ -107,13 +115,13 @@ let g:VM_maps["Add Cursor Up"] = '<C-S-up>'
 " Remaps in VM : 
 " these do not seem to work for some reason, find fix if possible
 function! VM_Start()
-    nnoremap <C-S-j> <C-S-down>
-    nnoremap <C-S-k> <C-S-up>
+    nnoremap <buffer> <C-S-J> <C-S-down>
+    nnoremap <buffer> <C-S-K> <C-S-up>
 endfunction
 
 function! VM_Exit()
-    nunmap <C-S-j> <C-S-down>
-    nunmap <C-S-k> <C-S-up>
+    nunmap <buffer> <C-S-J> 
+    nunmap <buffer> <C-S-K> 
 endfunction
 
 " remap keys for normal commands
@@ -129,14 +137,24 @@ let g:VM_silent_exit = 1
 " Verbose VM 
 let g:VM_verbose_commands = 1
 
+" Always update status line
+let g:VM_set_statusline = 3
+
 " color scheme
 let base16colorspace=256            " Access colors present in 256 colorspace
 set termguicolors                   " Brighter colors if terminal supports
+
+" Smart on/off of sudo access on files
+let g:suda_smart_edit = 1
 
 " show opened buffers as tabs
 let g:airline#extensions#tabline#enabled = 1
 " use powerline fonts
 let g:airline_powerline_fonts = 1
+
+" tabline formatter
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#fnamecollapse = 0
 
 " Allow spaces after tabs, but not in between
 " Use tabs for indentation and spaces for alignment
