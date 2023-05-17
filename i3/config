@@ -378,9 +378,9 @@ bar {
     # show this bar on top
     position top
     # this bar can be shown/hidden
-    # mode dock 
-    # start with this bar shown
-    # hidden_state show 
+    mode hide 
+    # start with this bar hidden
+    # hidden_state hide 
     # $mod key shows this bar if hidden
     modifier $mod 
     # no need to show the tray output on this bar
