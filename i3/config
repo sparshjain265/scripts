@@ -348,16 +348,49 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # }
 
 bar {
+    id bar_bottom
     # status_command i3status
     status_command i3blocks
-	font pango:Hack, FontAwesome 10
+    font pango:Hack, FontAwesome 10
 
-	colors {
-		separator $transparent
-	} 
+    colors {
+        separator $transparent
+    }
 
-	tray_output primary
+    # $mod key shows this bar if hidden
+    modifier $mod
+
+    tray_output primary
 }
+
+bar {
+    id bar_top
+    # status_command i3status
+    status_command i3blocks -c ~/.config/i3/i3blocksTop.conf
+    font pango:Hack, FontAwesome 10
+
+    colors {
+        separator $transparent
+    }
+
+    # don't show workspace buttons
+    workspace_buttons no
+    # show this bar on top
+    position top
+    # this bar can be shown/hidden
+    # mode dock 
+    # start with this bar shown
+    # hidden_state show 
+    # $mod key shows this bar if hidden
+    modifier $mod 
+    # no need to show the tray output on this bar
+    tray_output none 
+}
+
+# toggle top bar 
+bindsym $mod+grave bar mode toggle bar_top
+# toggle bottom bar 
+bindsym $mod+Shift+grave bar mode toggle bar_bottom
 
 # # Startup programs and Workspace assignments
 # Layout script

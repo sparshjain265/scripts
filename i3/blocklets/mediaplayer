@@ -30,12 +30,15 @@ if ($BLOCK_INSTANCE) {
     $player_arg = "--player='$BLOCK_INSTANCE'";
 }
 
+# 1 is left click - next
+# 2 is middle click - play/pause
+# 3 is right click - previous
 if ($ENV{'BLOCK_BUTTON'} == 1) {
-    system("playerctl $player_arg previous");
+    system("playerctl $player_arg next");
 } elsif ($ENV{'BLOCK_BUTTON'} == 2) {
     system("playerctl $player_arg play-pause");
 } elsif ($ENV{'BLOCK_BUTTON'} == 3) {
-    system("playerctl $player_arg next");
+    system("playerctl $player_arg previous");
 }
 
 if ($player_arg eq '' or $player_arg =~ /cmus$/) {
@@ -64,13 +67,23 @@ if ($player_arg eq '' or $player_arg =~ /cmus$/) {
     exit 0 unless $player_arg eq '';
 }
 
-my $artist = qx(playerctl $player_arg metadata artist);
-# exit status will be nonzero when playerctl cannot find your player
-exit(0) if $?;
-push(@metadata, $artist) if $artist;
+# my $artist = qx(playerctl $player_arg metadata artist);
+# # exit status will be nonzero when playerctl cannot find your player
+# exit(0) if $?;
+# push(@metadata, $artist) if $artist;
+# 
+# my $title = qx(playerctl $player_arg metadata title);
+# exit(0) if $?;
+# push(@metadata, $title) if $title;
+# 
+# print(join(" - ", @metadata)) if @metadata;
 
-my $title = qx(playerctl $player_arg metadata title);
+my $long_text = qx(playerctl $player_arg metadata --format '{{title}} ~{{artist}}');
 exit(0) if $?;
-push(@metadata, $title) if $title;
+push(@metadata, $long_text) if $long_text;
 
-print(join(" - ", @metadata)) if @metadata;
+my $short_text = qx(playerctl $player_arg metadata title);
+exit(0) if $?;
+push(@metadata, $short_text) if $short_text;
+
+print(join("", @metadata)) if @metadata;

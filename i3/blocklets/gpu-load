@@ -53,7 +53,8 @@ if ($gpu_brand eq "NVIDIA") {
         }
     }
     close(NVS);
-    $full_text = sprintf "%.0f%% %.0f%% %.0f%% %.0f%%\n", $gpu_usage, $gpu_mem, $gpu_video, $gpu_pcie;
+    # $full_text = sprintf "%.0f%% %.0f%% %.0f%% %.0f%%\n", $gpu_usage, $gpu_mem, $gpu_video, $gpu_pcie;
+    $full_text = sprintf "%.0f%%  GRAM %.0f%%\n", $gpu_usage, $gpu_mem;
 } 
 
 # For AMD, get from radeontop

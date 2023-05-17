@@ -1,6 +1,6 @@
 #!/bin/bash
 date_time=$(date '+%a %d-%m-%Y %R:%S')
-echo "$date_time"
+echo "$date_time    "
 
 #Buttons Control
 case "$BLOCK_BUTTON" in

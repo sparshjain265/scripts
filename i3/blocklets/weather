@@ -13,7 +13,7 @@ LAT=33.79
 LON=-84.4
 
 URGENT_LOWER=0
-URGENT_HIGHER=30
+URGENT_HIGHER=35
 
 ICON_SUNNY=""
 ICON_CLOUDY=""
@@ -28,38 +28,49 @@ WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON
 
 WEATHER_INFO=$(wget -qO- "${WEATHER_URL}")
 WEATHER_MAIN=$(echo "${WEATHER_INFO}" | grep -o -e '\"main\":\"[a-Z]*\"' | awk -F ':' '{print $2}' | tr -d '"')
-WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -o -e '\"temp\":\-\?[0-9]*' | awk -F ':' '{print $2}' | tr -d '"')
-
+WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -o -e '\"temp\":\-\?[0-9]*\.[0-9]*' | awk -F ':' '{print $2}' | tr -d '"')
+WEATHER_FEEL=$(echo "${WEATHER_INFO}" | grep -o -e '\"feels_like\":\-\?[0-9]*\.[0-9]*' | awk -F ':' '{print $2}' | tr -d '"')
+# echo "${WEATHER_INFO}"
 if [[ "${WEATHER_MAIN}" = *Snow* ]]; then
-  echo "${ICON_SNOW} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo "${ICON_SNOW} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo ""
+    echo "${ICON_SNOW} ${WEATHER_MAIN} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}  feels like ${WEATHER_FEEL} ${SYMBOL_CELSIUS}" 
+    # echo "${WEATHER_INFO}"
+    echo "${ICON_SNOW} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}"
+    echo ""
 elif [[ "${WEATHER_MAIN}" = *Rain* ]] || [[ "${WEATHER_MAIN}" = *Drizzle* ]]; then
-  echo "${ICON_RAINY} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo "${ICON_RAINY} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo ""
+    echo "${ICON_RAINY} ${WEATHER_MAIN} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}  feels like ${WEATHER_FEEL} ${SYMBOL_CELSIUS}" 
+    # echo "${WEATHER_INFO}"
+    echo "${ICON_RAINY} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}"
+    echo ""
 elif [[ "${WEATHER_MAIN}" = *Thunderstorm* ]]; then
-  echo "${ICON_STORM} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo "${ICON_STORM} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo ""
+    echo "${ICON_STORM} ${WEATHER_MAIN} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}  feels like ${WEATHER_FEEL} ${SYMBOL_CELSIUS}" 
+    # echo "${WEATHER_INFO}"
+    echo "${ICON_STORM} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}"
+    echo ""
 elif [[ "${WEATHER_MAIN}" = *Cloud* ]]; then
-  echo "${ICON_CLOUDY} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo "${ICON_CLOUDY} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo ""
+    echo "${ICON_CLOUDY} ${WEATHER_MAIN} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}  feels like ${WEATHER_FEEL} ${SYMBOL_CELSIUS}" 
+    # echo "${WEATHER_INFO}"
+    echo "${ICON_CLOUDY} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}"
+    echo ""
 elif [[ "${WEATHER_MAIN}" = *Clear* ]]; then
-  echo "${ICON_SUNNY} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo "${ICON_SUNNY} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo ""
+    echo "${ICON_SUNNY} ${WEATHER_MAIN} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}  feels like ${WEATHER_FEEL} ${SYMBOL_CELSIUS}" 
+    # echo "${WEATHER_INFO}"
+    echo "${ICON_SUNNY} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}"
+    echo ""
 elif [[ "${WEATHER_MAIN}" = *Fog* ]] || [[ "${WEATHER_MAIN}" = *Mist* ]]; then
-  echo "${ICON_FOG} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo "${ICON_FOG} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo ""
+    echo "${ICON_FOG} ${WEATHER_MAIN} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}  feels like ${WEATHER_FEEL} ${SYMBOL_CELSIUS}" 
+    # echo "${WEATHER_INFO}"
+    echo "${ICON_FOG} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}"
+    echo ""
 else
-  echo "${WEATHER_MAIN} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo "${WEATHER_MAIN} ${WEATHER_TEMP}${SYMBOL_CELSIUS}"
-  echo ""
+    echo "${WEATHER_MAIN} ${WEATHER_MAIN} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}  feels like ${WEATHER_FEEL} ${SYMBOL_CELSIUS}" 
+    # echo "${WEATHER_INFO}"
+    echo "${WEATHER_MAIN} ${WEATHER_TEMP} ${SYMBOL_CELSIUS}"
+    echo ""
 fi
 
+# get integer weather temperature since bash can only do integer arithmetic
+WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -o -e '\"temp\":\-\?[0-9]*' | awk -F ':' '{print $2}' | tr -d '"')
+
 if [[ "${WEATHER_TEMP}" -lt "${URGENT_LOWER}" ]] || [[ "${WEATHER_TEMP}" -gt "${URGENT_HIGHER}" ]]; then
-  exit 33
+    exit 33
 fi
