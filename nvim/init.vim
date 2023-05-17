@@ -50,41 +50,84 @@ let g:plugged_home = '~/.config/nvim/plugged'
 
 " Plugins List
 call plug#begin(g:plugged_home)
-    " Disable search highlighting once done
-    Plug 'romainl/vim-cool'
-    
-    " Quickly surround with brackets and more...
-    Plug 'tpope/vim-surround'
+" Disable search highlighting once done
+Plug 'romainl/vim-cool'
 
-    " Snippets
-    " Plug 'SirVer/ultisnips'
-    " Plug 'honza/vim-snippets'
+" Quickly surround with brackets and more...
+Plug 'tpope/vim-surround'
 
-    " Pop-up menus for auto-completion
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Snippets
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
-    " File explorer
-    " Plug 'preservim/nerdtree'
-    Plug 'scrooloose/nerdtree'
+" Pop-up menus for auto-completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    " Tagbar to browse a file and get an overview of its structure
-    Plug 'preservim/tagbar'
+" File explorer
+" Plug 'preservim/nerdtree'
+Plug 'scrooloose/nerdtree'
 
-    " Commenter
-    Plug 'preservim/nerdcommenter'
+" Tagbar to browse a file and get an overview of its structure
+Plug 'preservim/tagbar'
 
-    " Fancy start screen
-    Plug 'mhinz/vim-startify'
+" Commenter
+Plug 'preservim/nerdcommenter'
 
-    " Terminal
-    " Plug 'tc50cal/vim-terminal'
+" Multi-Cursor - needs configuration
+Plug 'mg979/vim-visual-multi'  
 
-    " UI Related
-    Plug 'chriskempson/base16-vim'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-    Plug 'ryanoasis/vim-devicons'
+" Fancy start screen
+Plug 'mhinz/vim-startify'
+
+" Terminal - not required since the built-in terminal is good enough
+" Plug 'tc50cal/vim-terminal'
+
+" UI Related
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
+
+" Multi-Cursor support related config
+" To change any mapping, we must first initialize the variable
+let g:VM_maps = {}
+
+" Disable permanent mappings - Not required since we can replace the default
+" bindings
+" let g:VM_default_mappings = 0
+
+" Enable mouse mappings
+let g:VM_mouse_mappings = 1
+
+" Add cursor down
+let g:VM_maps["Add Cursor Down"] = '<C-S-down>'
+let g:VM_maps["Add Cursor Up"] = '<C-S-up>'
+
+" Remaps in VM : 
+" these do not seem to work for some reason, find fix if possible
+function! VM_Start()
+    nnoremap <C-S-j> <C-S-down>
+    nnoremap <C-S-k> <C-S-up>
+endfunction
+
+function! VM_Exit()
+    nunmap <C-S-j> <C-S-down>
+    nunmap <C-S-k> <C-S-up>
+endfunction
+
+" remap keys for normal commands
+let g:VM_custom_noremaps = {'==': '==', '<<': '<<', '>>': '>>'}
+
+" Find Under and Find Subword Under to select the word under the cursor
+let g:VM_maps["Find Under"] = '<C-d>'
+let g:VM_maps["Find Subword Under"] = '<C-d>'
+
+" Don't display a message when exiting VM 
+let g:VM_silent_exit = 1
+
+" Verbose VM 
+let g:VM_verbose_commands = 1
 
 " color scheme
 let base16colorspace=256            " Access colors present in 256 colorspace
@@ -94,6 +137,18 @@ set termguicolors                   " Brighter colors if terminal supports
 let g:airline#extensions#tabline#enabled = 1
 " use powerline fonts
 let g:airline_powerline_fonts = 1
+
+" Allow spaces after tabs, but not in between
+" Use tabs for indentation and spaces for alignment
+let g:airline#extensions#whitespace#mixed_indent_algo = 2
+
+" configure which whitespace checks to enable.
+" indent: mixed indent within a line
+" long:   overlong lines                                          " Don't check for these either, allow long lines
+" trailing: trailing whitespace                                   " Yeah don't check for these, allow trailing whitespaces
+" mixed-indent-file: different indentation in different lines 
+" conflicts: checks for conflict markers
+let g:airline#extensions#whitespace#checks = [ 'indent', 'mixed-indent-file', 'conflicts' ]
 
 " Toggle File Explorer
 nnoremap <nowait><silent> <C-B> :NERDTreeToggle<CR>
@@ -112,6 +167,7 @@ augroup MyNeovimBuffers
     " If another buffer tries to replace Tagbar, put it in the left window, and bring back Tagbar.
     autocmd BufEnter * if bufname('#') =~ 'Tagbar' && bufname('%') !~ 'Tagbar' && winnr('$') > 1 |
                 \ let buftag=bufnr() | buffer# | execute "normal! \<C-W>h" | execute 'buffer'.buftag | endif
+
 augroup END
 
 augroup MyNeovimNerdTree
@@ -158,12 +214,12 @@ noremap <nowait><silent> <leader>cA <plug>NERDCommenterAltDelims
 " Startify settings
 " Startify list
 let g:startify_lists = [
-          \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-          \ { 'type': 'files',     'header': ['   MRU']            },
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': 'commands',  'header': ['   Commands']       },
-          \ ]
+            \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+            \ { 'type': 'files',     'header': ['   MRU']            },
+            \ { 'type': 'sessions',  'header': ['   Sessions']       },
+            \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+            \ { 'type': 'commands',  'header': ['   Commands']       },
+            \ ]
 " Relative paths
 let g:startify_relative_path = 1
 " close nerdtree and tagbar before saving a session
@@ -183,19 +239,19 @@ let g:startify_session_sort = 1
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
+            \ coc#pum#visible() ? coc#pum#next(1) :
+            \ CheckBackspace() ? "\<Tab>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 
@@ -246,7 +302,7 @@ inoremap <C-right> <Esc><C-w>l==gi
 augroup MyNeovimReopen
     autocmd!
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-        \| exe "normal! g'\"" | endif 
+                \| exe "normal! g'\"" | endif 
 augroup END
 
 " Open terminal below from normal mode

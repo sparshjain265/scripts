@@ -27,6 +27,7 @@
 | :%s/.../.../.. | Substitute actions in the whole file instead of just the current line |
 | >> | Indent towards right |
 | << | Indent towards left |
+| == | Auto indent |
 | <y/d/c>s<motion><bracket/tag> | Insert/Delete/Change the surrounding <bracket/tag> of <motion> |
 | <C-O> | Go to previous position, before 'jump' |
 | <C-I> | Go to next position, after 'jump' |
@@ -51,6 +52,9 @@
 | <C-0> | Reset window sizes |
 | <C-`> | Open terminal below (like vscode) |
 | <F8> | Toggle Tagbar |
+| /// | Toggle Cursor (and toggle multi-cursor mode) |
+| <C-d> | Select and start search for the word under the cursor (and toggle cursor and multi-cursor mode) *Note: n/N will select (and insert cursor in) the next/previous occurrence of the word, use q to remove cursor from that occurrence if not required* |
+| <C-S-up/down> | Add cursor up/down of the current cursor (skips a line if it is not possible on that line) |
 
 | Key | Motion |
 | repeat action key (e.g. dd, yy) | Line |
@@ -119,6 +123,7 @@
 | <y/d/c>s<motion><bracket/tag> | Insert/Delete/Change the surrounding <bracket/tag> of <motion> |
 | <A-k>/<A-j> | Move selected lines up/down |
 | <C-h>/<C-j>/<C-k>/<C-l> | Move left/down/up/right between split panes |
+| <C-g> | Switch to Select mode |
 
 ## Terminal Mode 
 
