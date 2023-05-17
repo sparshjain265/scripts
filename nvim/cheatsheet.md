@@ -10,6 +10,7 @@
 | y<motion> | Yank (Copy) |
 | d<motion> | Delete (Cut) |
 | c<motion> | Change (Delete and insert mode) |
+| zz | Scroll the current line to be in the center of the screen |
 | ~ | Change case of current character |
 | g~<motion> | Change case |
 | gu<motion> | Change to lowercase |
@@ -119,7 +120,8 @@
 
 | Key | Action |
 | <motion> | Select <motion> |
-| <C-/> | Toggle Comment with pretty block formatting |
+| <C-/> | Toggle Comment |
+| <leader>cs | Comment with a pretty block format |
 | <y/d/c>s<motion><bracket/tag> | Insert/Delete/Change the surrounding <bracket/tag> of <motion> |
 | <A-k>/<A-j> | Move selected lines up/down |
 | <C-h>/<C-j>/<C-k>/<C-l> | Move left/down/up/right between split panes |

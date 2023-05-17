@@ -220,8 +220,10 @@ let g:NERDToggleCheckAllLines = 1
 
 " Toggle Comment in normal mode using <C-/>
 nnoremap <nowait><silent> <C-/> <plug>NERDCommenterToggle
-" Toggle Comment with formatting in visual mode using <C-/>
-vnoremap <nowait><silent> <C-/> <plug>NERDCommenterSexy
+" Toggle Comment in visual mode using <C-/>
+vnoremap <nowait><silent> <C-/> <plug>NERDCommenterTogglegv
+" Toggle Comment with formatting in visual mode
+vnoremap <nowait><silent> <leader>cs <plug>NERDCommenterSexygv
 " Insert Comment in insert mode using <C-/>
 inoremap <nowait><silent> <C-/> <plug>NERDCommenterInsert
 " Insert Comment to the end of line and go to insert mode there
@@ -275,10 +277,10 @@ endfunction
 
 " Convenient Keybindings
 " Move line/selected block as in vscode
-nnoremap <A-j> :m .+1<CR>
-nnoremap <A-k> :m .-2<CR>
-nnoremap <A-down> :m .+1<CR>
-nnoremap <A-up> :m .-2<CR>
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+nnoremap <A-down> :m .+1<CR>==
+nnoremap <A-up> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 inoremap <A-down> <Esc>:m .+1<CR>==gi
@@ -300,21 +302,21 @@ nnoremap <C-A-right> <C-W>L
 
 " move left/down/up/right between split panes in normal/insert/visual mode
 noremap <C-h> <C-w>h
-inoremap <C-h> <Esc><C-w>h==gi
+inoremap <C-h> <Esc><C-w>hi
 noremap <C-j> <C-w>j
-inoremap <C-j> <Esc><C-w>j==gi
+inoremap <C-j> <Esc><C-w>ji
 noremap <C-k> <C-w>k
-inoremap <C-k> <Esc><C-w>k==gi
+inoremap <C-k> <Esc><C-w>ki
 noremap <C-l> <C-w>l
-inoremap <C-l> <Esc><C-w>l==gi
+inoremap <C-l> <Esc><C-w>li
 noremap <C-left> <C-w>h
-inoremap <C-left> <Esc><C-w>h==gi
+inoremap <C-left> <Esc><C-w>hi
 noremap <C-down> <C-w>j
-inoremap <C-down> <Esc><C-w>j==gi
+inoremap <C-down> <Esc><C-w>ji
 noremap <C-up> <C-w>k
-inoremap <C-up> <Esc><C-w>k==gi
+inoremap <C-up> <Esc><C-w>ki
 noremap <C-right> <C-w>l
-inoremap <C-right> <Esc><C-w>l==gi
+inoremap <C-right> <Esc><C-w>li
 
 " jump to the last position when reopening a file
 augroup MyNeovimReopen
