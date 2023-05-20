@@ -37,3 +37,5 @@ alias nautilus='GTK_THEME=oomox-DarkOnesk1 /bin/nautilus'
 
 alias yay='paru'
 alias please='sudo'
+
+alias kitty='kitty -1'
