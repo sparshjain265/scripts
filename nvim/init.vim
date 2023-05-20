@@ -38,6 +38,10 @@ set ttyfast                         " speed up scrolling
 set splitright
 set splitbelow
 
+set scrolloff=8
+set sidescrolloff=8
+let g:tagbar_scrolloff = 8
+
 " Move to prev/next buffers
 nnoremap <nowait><silent> <F2> :bprevious<CR>
 inoremap <nowait><silent> <F2> <ESC>:bprevious<CR>i

@@ -72,7 +72,7 @@ Required symlinks and chmods are listed below.
 * `kitty` for GPU rendering fast terminal emulator
 * `ranger` for tui file manager
 * `nvim` for neovim
-* `vim-plug` for nvim plugin manager
+* `vim-plug` (or `vim-plug-neo`) for nvim plugin manager
 * `pynvim` (`pip install pynvim`) for python support in nvim
 * `sudo npm install -g neovim` for node support in nvim
 * `python-powerline` and `powerline-fonts` for patched fonts in nvim plugins
