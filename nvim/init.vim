@@ -19,7 +19,6 @@ set autoindent						" set new line in the same indentation as the previous line
 set number							" set line numbers
 set relativenumber					" set relative line numbers
 " set colorcolumn=80                                    " column border for good style
-" hi ColorColumn ctermbg=darkgrey guibg=darkgrey        " dark grey column border
 " set wildmode=longest:full         " tab completion
 
 filetype on
@@ -86,10 +85,14 @@ Plug 'lambdalisue/suda.vim'
 " Terminal - not required since the built-in terminal is good enough
 " Plug 'tc50cal/vim-terminal'
 
+" Check Startup Time
+Plug 'dstein64/vim-startuptime'
+
 " CSS color preview
 Plug 'ap/vim-css-color'
 
 " UI Related
+Plug 'Yggdroot/indentLine'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -140,12 +143,21 @@ let g:VM_verbose_commands = 1
 " Always update status line
 let g:VM_set_statusline = 3
 
+" Smart on/off of sudo access on files
+let g:suda_smart_edit = 1
+
 " color scheme
 let base16colorspace=256            " Access colors present in 256 colorspace
 set termguicolors                   " Brighter colors if terminal supports
 
-" Smart on/off of sudo access on files
-let g:suda_smart_edit = 1
+" Set menu colors 
+highlight Pmenu ctermbg=darkblue ctermfg=white guibg=#272836 guifg=white 
+highlight PmenuSel ctermbg=darkgrey ctermfg=darkblue guibg=#1c1d26 guifg=white  
+highlight PmenuSbar ctermbg=darkblue guibg=#272836
+highlight PmenuThumb ctermbg=darkgrey guibg=#1c1d26
+
+" Tab levels
+let g:indentLine_char = '▏'
 
 " show opened buffers as tabs
 let g:airline#extensions#tabline#enabled = 1
@@ -258,21 +270,30 @@ let g:startify_session_sort = 1
 " no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-            \ coc#pum#visible() ? coc#pum#next(1) :
-            \ CheckBackspace() ? "\<Tab>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" make tab Autocomplete
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "<Tab>"
+" make enter also autocomplete
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "<CR>"
+" make Esc close the autocomplete menu if open
+inoremap <silent><expr> <Esc> coc#pum#visible() ? coc#pum#cancel() : "<Esc>"
+" Make <C-d> jump to definition as detected by coc
+" inoremap <C-d> :call 
+" inoremap <silent><expr> <down>
+" \ coc#pum#visible() ? coc#pum#next(1) :
+" \ CheckBackspace() ? "\<down>" :
+" \ coc#refresh()
+" inoremap <expr><up> coc#pum#visible() ? coc#pum#prev(1) : "\<up>"
+" 
+" " Make <CR> to accept selected completion item or notify coc.nvim to format
+" " <C-g>u breaks current undo, please make your own choice
+" inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm()
+" \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" 
+" function! CheckBackspace() abort
+" let col = col('.') - 1
+" return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
 
 " Convenient Keybindings
@@ -303,20 +324,35 @@ nnoremap <C-A-right> <C-W>L
 " move left/down/up/right between split panes in normal/insert/visual mode
 noremap <C-h> <C-w>h
 inoremap <C-h> <Esc><C-w>hi
+tnoremap <C-h> <C-\><C-n><C-w>hi
+
 noremap <C-j> <C-w>j
 inoremap <C-j> <Esc><C-w>ji
+tnoremap <C-j> <C-\><C-n><C-w>ji
+
 noremap <C-k> <C-w>k
 inoremap <C-k> <Esc><C-w>ki
+tnoremap <C-k> <C-\><C-n><C-w>ki
+
 noremap <C-l> <C-w>l
 inoremap <C-l> <Esc><C-w>li
+tnoremap <C-l> <C-\><C-n><C-w>li
+
 noremap <C-left> <C-w>h
 inoremap <C-left> <Esc><C-w>hi
+tnoremap <C-left> <C-\><C-n><C-w>hi
+
 noremap <C-down> <C-w>j
 inoremap <C-down> <Esc><C-w>ji
+tnoremap <C-down> <C-\><C-n><C-w>ji
+
 noremap <C-up> <C-w>k
 inoremap <C-up> <Esc><C-w>ki
+tnoremap <C-up> <C-\><C-n><C-w>ki
+
 noremap <C-right> <C-w>l
 inoremap <C-right> <Esc><C-w>li
+tnoremap <C-right> <C-\><C-n><C-w>li
 
 " jump to the last position when reopening a file
 augroup MyNeovimReopen
@@ -325,7 +361,7 @@ augroup MyNeovimReopen
                 \| exe "normal! g'\"" | endif 
 augroup END
 
-" Open terminal below from normal mode
+" Open terminal below from normal mode and enter in insert mode
 nnoremap <C-`> :split<CR><C-w>J:terminal<CR>i
 " map <Esc> to exit terminal mode and enter normal mode 
 tnoremap <Esc> <C-\><C-n>
@@ -349,7 +385,6 @@ augroup MyNeovimTerminal
     autocmd!
     " Enter edit more on terminal enter 
     autocmd TermEnter *  startinsert
-    " Autoresize terminal window 
-    autocmd TermLeave *  resize 1
-    autocmd TermEnter *  resize 10
+    " Initial terminal size - maybe not
+    " autocmd TermOpen *  resize 10
 augroup END

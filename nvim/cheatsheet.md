@@ -132,3 +132,11 @@
 | Key | Action |
 | <Esc> | Go to normal mode |
 | <C-\><C-n> | Go to normal mode |
+
+## Note
+
+* :PlugClean to clean/uninstall plugins
+* :PlugInstall to install plugins
+* :PlugUpdate to update plugins
+* :PlugUpgrade to upgrade VimPlug itself
+* :CocInstall coc-pyright for python autocomplete
