@@ -16,6 +16,7 @@ set softtabstop=4					" soft tab stop
 set expandtab						" use spaces for tabs
 set shiftwidth=4					" width for indentation purposes
 set autoindent						" set new line in the same indentation as the previous line
+set smartindent                     " set smartindent
 set number							" set line numbers
 set relativenumber					" set relative line numbers
 " set colorcolumn=80                                    " column border for good style
@@ -41,6 +42,8 @@ set splitbelow
 set scrolloff=8
 set sidescrolloff=8
 let g:tagbar_scrolloff = 8
+
+set signcolumn=yes
 
 " Move to prev/next buffers
 nnoremap <nowait><silent> <F2> :bprevious<CR>
@@ -159,6 +162,7 @@ highlight Pmenu ctermbg=darkblue ctermfg=white guibg=#272836 guifg=white
 highlight PmenuSel ctermbg=darkgrey ctermfg=darkblue guibg=#1c1d26 guifg=white  
 highlight PmenuSbar ctermbg=darkblue guibg=#272836
 highlight PmenuThumb ctermbg=darkgrey guibg=#1c1d26
+highlight SignColumn ctermbg=NONE guibg=NONE
 
 " Tab levels
 let g:indentLine_char = '▏'

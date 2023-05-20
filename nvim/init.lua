@@ -2,3 +2,8 @@
 
 -- For basic options
 require "user.options"
+
+-- TODO
+-- let g:tagbar_scrolloff = 8
+-- plugins
+-- vim.opt.base16colorspace = 256          -- access colors present in 256 colorspace
