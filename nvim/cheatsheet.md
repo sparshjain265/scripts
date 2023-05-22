@@ -3,6 +3,7 @@
 ## Normal Mode 
 
 | Key | Action |
+| -- | -- |
 | :help <term> | Shows help (documentation) about <term> |
 | :w[a] | Write (Save) [all] buffer[s] |
 | :q[a] | Quit [all] pane[s] |
@@ -58,6 +59,7 @@
 | <C-S-up/down> | Add cursor up/down of the current cursor (skips a line if it is not possible on that line) |
 
 | Key | Motion |
+| -- | -- |
 | repeat action key (e.g. dd, yy) | Line |
 | w | Till the beginning of next word |
 | e | Till the end of current word |
@@ -108,6 +110,7 @@
 ## Insert Mode 
 
 | Key | Action |
+| -- | -- |
 | <C-x>s | Show menu of suggested spellings |
 | <F3> | Next Buffer/Tab |
 | <F2> | Previous Buffer/Tab |
@@ -119,6 +122,7 @@
 ## Visual Mode
 
 | Key | Action |
+| -- | -- |
 | <motion> | Select <motion> |
 | <C-/> | Toggle Comment |
 | <leader>cs | Comment with a pretty block format |
@@ -130,6 +134,7 @@
 ## Terminal Mode 
 
 | Key | Action |
+| -- | -- |
 | <Esc> | Go to normal mode |
 | <C-\><C-n> | Go to normal mode |
 
