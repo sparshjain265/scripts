@@ -73,6 +73,17 @@ Required symlinks and chmods are listed below.
 * `ranger` for tui file manager
 * `nvim` for neovim
 * `vim-plug` (or `vim-plug-neo`) for nvim plugin manager
+* `nvim-packer` for lua based nvim plugin manager
 * `pynvim` (`pip install pynvim`) for python support in nvim
 * `sudo npm install -g neovim` for node support in nvim
+* `interception-caps2esc` from [caps2esc](https://gitlab.com/interception/linux/plugins/caps2esc) and configure `/etc/interception/udevmon.yaml` with the following data:
+
+    ```[yaml]
+    - JOB: "intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
+    DEVICE:
+    EVENTS:
+    EV_KEY: [[KEY_CAPSLOCK, KEY_ESC]]
+    ```
+
+    so that Caps Lock and Esc keys are swapped, and the Caps Lock key also behaves like Ctrl in combination with other keys
 * `python-powerline` and `powerline-fonts` for patched fonts in nvim plugins
