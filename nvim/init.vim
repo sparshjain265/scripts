@@ -47,9 +47,9 @@ set signcolumn=yes
 
 " Move to prev/next buffers
 nnoremap <nowait><silent> <F2> :bprevious<CR>
-inoremap <nowait><silent> <F2> <ESC>:bprevious<CR>i
+inoremap <nowait><silent> <F2> <ESC>:bprevious<CR>a
 nnoremap <nowait><silent> <F3> :bnext<CR>
-inoremap <nowait><silent> <F3> <ESC>:bnext<CR>i
+inoremap <nowait><silent> <F3> <ESC>:bnext<CR>a
 
 " g plugged home
 let g:plugged_home = '~/.config/nvim/plugged'
@@ -189,7 +189,7 @@ let g:airline#extensions#whitespace#mixed_indent_algo = 2
 let g:airline#extensions#whitespace#checks = [ 'indent', 'mixed-indent-file', 'conflicts' ]
 
 " Toggle File Explorer
-nnoremap <nowait><silent> <C-B> :NERDTreeToggle<CR>
+nnoremap <nowait><silent> <leader>e :NERDTreeToggle<CR>
 " inoremap <nowait><silent> <C-B> <ESC>:NERDTreeToggle<CR>
 
 " Toggle Tagbar
@@ -280,11 +280,17 @@ let g:startify_session_sort = 1
 " other plugin before putting this into your config
 
 " make tab Autocomplete
-inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "<Tab>"
+" inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "<Tab>"
+inoremap <silent><expr> <Tab> pumvisible() ? coc#pum#confirm() : "<Tab>"
+
 " make enter also autocomplete
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "<CR>"
+inoremap <silent><expr> <CR> pumvisible() ? coc#pum#confirm() : "<CR>"
+
 " make Esc close the autocomplete menu if open
-inoremap <silent><expr> <Esc> coc#pum#visible() ? coc#pum#cancel() : "<Esc>"
+" inoremap <silent><expr> <Esc> coc#pum#visible() ? coc#pum#cancel() : "<Esc>"
+inoremap <silent><expr> <Esc> pumvisible() ? coc#pum#cancel() : "<Esc>"
+
 " Make <C-d> jump to definition as detected by coc
 " inoremap <C-d> :call 
 " inoremap <silent><expr> <down>
@@ -331,36 +337,36 @@ nnoremap <C-A-right> <C-W>L
 
 " move left/down/up/right between split panes in normal/insert/visual mode
 noremap <C-h> <C-w>h
-inoremap <C-h> <Esc><C-w>hi
-tnoremap <C-h> <C-\><C-n><C-w>hi
+inoremap <C-h> <Esc><C-w>ha
+tnoremap <C-h> <C-\><C-n><C-w>ha
 
 noremap <C-j> <C-w>j
-inoremap <C-j> <Esc><C-w>ji
-tnoremap <C-j> <C-\><C-n><C-w>ji
+inoremap <C-j> <Esc><C-w>ja
+tnoremap <C-j> <C-\><C-n><C-w>ja
 
 noremap <C-k> <C-w>k
-inoremap <C-k> <Esc><C-w>ki
-tnoremap <C-k> <C-\><C-n><C-w>ki
+inoremap <C-k> <Esc><C-w>ka
+tnoremap <C-k> <C-\><C-n><C-w>ka
 
 noremap <C-l> <C-w>l
-inoremap <C-l> <Esc><C-w>li
-tnoremap <C-l> <C-\><C-n><C-w>li
+inoremap <C-l> <Esc><C-w>la
+tnoremap <C-l> <C-\><C-n><C-w>la
 
 noremap <C-left> <C-w>h
-inoremap <C-left> <Esc><C-w>hi
-tnoremap <C-left> <C-\><C-n><C-w>hi
+inoremap <C-left> <Esc><C-w>ha
+tnoremap <C-left> <C-\><C-n><C-w>ha
 
 noremap <C-down> <C-w>j
-inoremap <C-down> <Esc><C-w>ji
-tnoremap <C-down> <C-\><C-n><C-w>ji
+inoremap <C-down> <Esc><C-w>ja
+tnoremap <C-down> <C-\><C-n><C-w>ja
 
 noremap <C-up> <C-w>k
-inoremap <C-up> <Esc><C-w>ki
-tnoremap <C-up> <C-\><C-n><C-w>ki
+inoremap <C-up> <Esc><C-w>ka
+tnoremap <C-up> <C-\><C-n><C-w>ka
 
 noremap <C-right> <C-w>l
-inoremap <C-right> <Esc><C-w>li
-tnoremap <C-right> <C-\><C-n><C-w>li
+inoremap <C-right> <Esc><C-w>la
+tnoremap <C-right> <C-\><C-n><C-w>la
 
 " jump to the last position when reopening a file
 augroup MyNeovimReopen

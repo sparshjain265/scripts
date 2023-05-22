@@ -35,7 +35,7 @@
 | :ju[mps] | Print the 'jump' list |
 | <F3> | Next Buffer/Tab |
 | <F2> | Previous Buffer/Tab |
-| <C-B> | Toggle File Explorer |
+| <leader>e | Toggle File Explorer |
 | <C-/> | Toggle Comment |
 | <leader>ca | Add comment at the end of the current line and enter insert mode |
 | <leader>cs | Comment with a pretty block format |
@@ -139,4 +139,8 @@
 * :PlugInstall to install plugins
 * :PlugUpdate to update plugins
 * :PlugUpgrade to upgrade VimPlug itself
+* :PackerClean to remove any disabled/unused plugins
+* :PackerInstall to clean, then install missing plugins
+* :PackerUpdate to clean, then update and install plugins
+* :PackerSync to sync any changes in the plugins
 * :CocInstall coc-pyright for python autocomplete

@@ -2,6 +2,8 @@
 
 -- For basic options
 require "user.options"
+require "user.keymaps"
+require "user.plugins"
 
 -- TODO
 -- let g:tagbar_scrolloff = 8
