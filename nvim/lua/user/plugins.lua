@@ -75,6 +75,9 @@ return packer.startup(function (use)
     -- TreeSitter context based comments
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
+    -- Git
+    use 'lewis6991/gitsigns.nvim'
+
     -- to show markdown preview
     -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, cmd = { "MarkdownPreview" } })
     -- use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}

@@ -75,7 +75,7 @@ cmp.setup {
         -- Accept currently selected item
         -- Set select = true to confirm the first option by default
         -- Set select = false to only confirm explicitely selected items
-        ['<CR>'] = cmp.mapping.confirm { select = false },
+        ['<CR>'] = cmp.mapping.confirm { select = true },
         -- Tab to cycle through autocomplete options
         -- Overload tab to jump through snippets
         ['<Tab>'] = cmp.mapping(function (fallback)

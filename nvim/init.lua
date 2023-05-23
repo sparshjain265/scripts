@@ -11,6 +11,7 @@ require "user.telescope"
 require "user.treesitter"
 require "user.autopairs"
 require "user.comment"
+require "user.gitsigns"
 
 -- TODO
 -- let g:tagbar_scrolloff = 8
