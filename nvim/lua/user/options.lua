@@ -60,18 +60,3 @@ vim.cmd "syntax on"
 -- allow arrow keys to wrap over first/last characters of the line to move to previous/next lines
 vim.cmd "set whichwrap+=<,>,[,]"
 
--- colors
--- make an augropu so that it is always triggered
--- explicitly set the default colorscheme to trigger it at least once
-vim.cmd[[
-augroup MyNeovimColors
-    autocmd!
-    autocmd ColorScheme * highlight Pmenu ctermbg=darkblue ctermfg=white guibg=#272836 guifg=white 
-    autocmd ColorScheme * highlight PmenuSel ctermbg=darkgrey ctermfg=darkblue guibg=#1c1d26 guifg=white  
-    autocmd ColorScheme * highlight PmenuSbar ctermbg=darkblue guibg=#272836
-    autocmd ColorScheme * highlight PmenuThumb ctermbg=darkgrey guibg=#1c1d26
-    autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
-augroup END
-colorscheme default
-]]
-

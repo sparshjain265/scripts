@@ -120,3 +120,10 @@ keymap("n", "<C-k0>", "<C-w><C-=>", opts)
 
 -- Retain the original clipboard when replacing something in visual mode
 keymap("v", "p", '"_dP', opts)
+
+-- Find/Open file with <leader>o similar to Ctrl+O shortcuts in most modern apps
+keymap('n', '<leader>o', "<cmd>Telescope find_files<CR>", opts)
+-- keymap('n', '<leader>o', "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opts)
+
+-- Find keywords with <leader>f similar to Ctrl-F shortcuts but more powerful
+keymap('n', '<leader>f', "<cmd>Telescope live_grep<CR>", opts)

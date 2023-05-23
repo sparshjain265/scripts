@@ -87,3 +87,4 @@ Required symlinks and chmods are listed below.
 
     so that Caps Lock and Esc keys are swapped, and the Caps Lock key also behaves like Ctrl in combination with other keys
 * `python-powerline` and `powerline-fonts` for patched fonts in nvim plugins
+* `chafa imagemagick ffmpegthumbnailer poppler epub-thumbnailer-git fontpreview` for telescope preview in nvim
