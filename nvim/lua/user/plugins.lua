@@ -32,6 +32,12 @@ return packer.startup(function (use)
     use 'nvim-lua/plenary.nvim'
     use 'nvim-lua/popup.nvim'
 
+    -- Autopairs
+    use 'windwp/nvim-autopairs'
+
+    -- Comments
+    use 'numToStr/Comment.nvim'
+
     -- Colorschemes
     use 'lunarvim/colorschemes'
 
@@ -65,6 +71,9 @@ return packer.startup(function (use)
     }
     use 'p00f/nvim-ts-rainbow'
     use 'nvim-treesitter/playground'
+
+    -- TreeSitter context based comments
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- to show markdown preview
     -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, cmd = { "MarkdownPreview" } })

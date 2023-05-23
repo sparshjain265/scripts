@@ -6,13 +6,21 @@ end
 configs.setup {
     ensure_installed = 'all',           -- one of 'all', 'maintained' (parsers with maintainers), or a list of languages
     sync_install = false,
+    auto_install = true,
     ignore_install = { '' },            -- list of parsers to ignore installing
+    autopairs = {
+        enable = true,
+    },
+    context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+    },
     highlight = {
         enable = true,                  -- false will disable the extension
         disable = { '' },               -- list of languages that will be disabled
         additional_vim_regex_highlighting = true,
     },
-    indent = { enable = true, disable = { 'yaml' } },
+    indent = { enable = true, disable = {} },
     rainbow = {
         enable = true,
         -- disable = { 'jsx', 'cpp' },  -- list of languages you want to disable the plugin for
@@ -40,3 +48,9 @@ configs.setup {
         -- }
     },
 }
+
+vim.cmd [[
+    set foldmethod=expr
+    set foldexpr=nvim_treesitter#foldexpr()
+    set nofoldenable
+]]
