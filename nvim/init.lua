@@ -12,6 +12,7 @@ require "user.treesitter"
 require "user.autopairs"
 require "user.comment"
 require "user.gitsigns"
+require "user.nvim-tree"
 
 -- TODO
 -- let g:tagbar_scrolloff = 8

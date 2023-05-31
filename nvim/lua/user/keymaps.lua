@@ -34,7 +34,7 @@ keymap("i", "<F2>", "<Esc>:bprevious<CR>a", opts)
 keymap("i", "<F3>", "<Esc>:bnext<CR>a", opts)
 
 -- Toggle built in file explorer
-keymap("n", "<leader>e", ":Lexplore 15<CR>", opts)
+-- keymap("n", "<leader>e", ":Lexplore 15<CR>", opts)
 
 -- Move between split panes
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -127,3 +127,6 @@ keymap('n', '<leader>o', "<cmd>Telescope find_files<CR>", opts)
 
 -- Find keywords with <leader>f similar to Ctrl-F shortcuts but more powerful
 keymap('n', '<leader>f', "<cmd>Telescope live_grep<CR>", opts)
+
+-- NvimTree
+keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)

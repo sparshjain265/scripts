@@ -38,6 +38,10 @@ return packer.startup(function (use)
     -- Comments
     use 'numToStr/Comment.nvim'
 
+    -- NvimTree 
+    use 'nvim-tree/nvim-web-devicons'
+    use 'nvim-tree/nvim-tree.lua'
+
     -- Colorschemes
     use 'lunarvim/colorschemes'
 
