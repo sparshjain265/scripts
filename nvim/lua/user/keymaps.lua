@@ -1,4 +1,4 @@
--- options for common keymaps 
+-- options for common keymaps
 local opts = { noremap = true, silent = true, nowait = true }
 
 local wait_opts = { noremap = true, silent = true }
@@ -28,10 +28,19 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "=", "=gv", opts)
 
 -- Move between buffers
-keymap("n", "<F2>", ":bprevious<CR>", opts)
-keymap("n", "<F3>", ":bnext<CR>", opts)
-keymap("i", "<F2>", "<Esc>:bprevious<CR>a", opts)
-keymap("i", "<F3>", "<Esc>:bnext<CR>a", opts)
+-- replacing :bprev and :bnext so that we actually move in order
+keymap("n", "<F2>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<F3>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
+keymap("i", "<F2>", "<Esc>:BufferLineCyclePrev<CR>a", opts)
+keymap("i", "<F3>", "<Esc>:BufferLineCycleNext<CR>a", opts)
+
+-- Move the buffers themselves
+keymap("n", "<S-F2>", ":BufferLineMovePrev<CR>", opts)
+keymap("n", "<S-F3>", ":BufferLineMoveNext<CR>", opts)
+keymap("i", "<S-F2>", "<Esc>:BufferLineMovePrev<CR>a", opts)
+keymap("i", "<S-F3>", "<Esc>:BufferLineMoveNext<CR>a", opts)
 
 -- Toggle built in file explorer
 -- keymap("n", "<leader>e", ":Lexplore 15<CR>", opts)
@@ -70,15 +79,15 @@ keymap("i", "<C-right>", "<Esc><C-w>la", opts)
 keymap("t", "<C-right>", "<C-\\><C-n><C-w>la", opts)
 
 -- move the split panes themselves
-keymap("n", "<C-A-h>",  "<C-W>H", opts)
-keymap("n", "<C-A-j>",  "<C-W>J", opts)
-keymap("n", "<C-A-k>",  "<C-W>K", opts)
-keymap("n", "<C-A-l>",  "<C-W>L", opts)
+keymap("n", "<C-A-h>", "<C-W>H", opts)
+keymap("n", "<C-A-j>", "<C-W>J", opts)
+keymap("n", "<C-A-k>", "<C-W>K", opts)
+keymap("n", "<C-A-l>", "<C-W>L", opts)
 
-keymap("n", "<C-A-left>",  "<C-W>H", opts)
-keymap("n", "<C-A-down>",  "<C-W>J", opts)
-keymap("n", "<C-A-up>",  "<C-W>K", opts)
-keymap("n", "<C-A-right>",  "<C-W>L", opts)
+keymap("n", "<C-A-left>", "<C-W>H", opts)
+keymap("n", "<C-A-down>", "<C-W>J", opts)
+keymap("n", "<C-A-up>", "<C-W>K", opts)
+keymap("n", "<C-A-right>", "<C-W>L", opts)
 
 -- move line/selected block with Alt
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
@@ -122,11 +131,14 @@ keymap("n", "<C-k0>", "<C-w><C-=>", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Find/Open file with <leader>o similar to Ctrl+O shortcuts in most modern apps
-keymap('n', '<leader>o', "<cmd>Telescope find_files<CR>", opts)
+keymap("n", "<leader>o", "<cmd>Telescope find_files<CR>", opts)
 -- keymap('n', '<leader>o', "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<CR>", opts)
 
 -- Find keywords with <leader>f similar to Ctrl-F shortcuts but more powerful
-keymap('n', '<leader>f', "<cmd>Telescope live_grep<CR>", opts)
+keymap("n", "<leader>f", "<cmd>Telescope live_grep<CR>", opts)
 
 -- NvimTree
-keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
+-- Autoformat (null-ls) when setup
+keymap("n", "<leader>l", ":lua vim.lsp.buf.format({async = false})<CR>", opts)
