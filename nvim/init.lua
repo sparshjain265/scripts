@@ -1,5 +1,8 @@
 -- This is like init.vim, we can source other files for modularity and maintainability
 
+-- Load this first for faster load times
+require("user.impatient")
+
 -- For basic options
 require("user.options")
 require("user.keymaps")
@@ -15,6 +18,11 @@ require("user.gitsigns")
 require("user.nvim-tree")
 require("user.bufferline")
 require("user.lualine")
+require("user.toggleterm")
+require("user.project")
+require("user.session")
+require("user.indentline")
+require("user.alpha")
 
 -- TODO
 -- let g:tagbar_scrolloff = 8

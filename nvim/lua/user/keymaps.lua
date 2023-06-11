@@ -105,8 +105,9 @@ keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 keymap("v", "<A-down>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-up>", ":m '<-2<CR>gv=gv", opts)
 
+-- now handled with toggleterm
 -- open terminal below from normal mode and enter in insert mode immediately
-keymap("n", "<C-`>", ":split<CR><C-w>J:terminal<CR>i", opts)
+-- keymap("n", "<C-`>", ":split<CR><C-w>J:terminal<CR>i", opts)
 -- Esc to exit terminal mode and enter normal mode
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)
 
@@ -136,6 +137,9 @@ keymap("n", "<leader>o", "<cmd>Telescope find_files<CR>", opts)
 
 -- Find keywords with <leader>f similar to Ctrl-F shortcuts but more powerful
 keymap("n", "<leader>f", "<cmd>Telescope live_grep<CR>", opts)
+
+-- Find projects
+keymap("n", "<leader>p", "<cmd>Telescope projects<CR>", opts)
 
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)

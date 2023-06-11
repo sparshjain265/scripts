@@ -5,6 +5,7 @@
 -- define options locally first
 local options = {
 	compatible = false, -- disable compatibility to old time vi
+	swapfile = false, -- disable swapfile, causes problems
 
 	showmatch = true, -- show matching parenthesis
 	ignorecase = true, -- case insensitive search
@@ -26,6 +27,8 @@ local options = {
 	-- access to system clipboards
 	clipboard = { "unnamed", "unnamedplus" },
 
+	hidden = true,
+
 	cursorline = true, -- highlight cursor line
 	cursorlineopt = "number", -- highlight only the line number of the cursorline
 	ttyfast = true, -- speed up scrolling
@@ -42,7 +45,7 @@ local options = {
 
 	-- undofile = true                 -- persistent undo
 
-	timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
+	timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
 	updatetime = 300, -- faster completion (4000ms by default)
 
 	signcolumn = "yes", -- always show the sign column to avoid shifting the text every now and then

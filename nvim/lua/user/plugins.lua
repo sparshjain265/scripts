@@ -49,10 +49,31 @@ return packer.startup(function(use)
 	-- Status Line
 	use("nvim-lualine/lualine.nvim")
 
+	-- Terminal
+	use("akinsho/toggleterm.nvim")
+
+	-- Project
+	use("coffebar/project.nvim")
+
+	-- Session Manager
+	use("Shatur/neovim-session-manager")
+
+	-- Faster loading times
+	use("lewis6991/impatient.nvim")
+
+	-- Indentation lines
+	use("lukas-reineke/indent-blankline.nvim")
+
+	-- Startup screen
+	use("goolord/alpha-nvim")
+
+	-- Vim Cool to avoid highlighting after search
+	use("romainl/vim-cool")
+
 	-- Colorschemes
 	use("lunarvim/colorschemes")
-	use("chriskempson/base16-vim")
-	use("ellisonleao/gruvbox.nvim")
+	-- use("chriskempson/base16-vim")
+	-- use("ellisonleao/gruvbox.nvim")
 	use("EdenEast/nightfox.nvim")
 	use("folke/tokyonight.nvim")
 	use("tiagovla/tokyodark.nvim")

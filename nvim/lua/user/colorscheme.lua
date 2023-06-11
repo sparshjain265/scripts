@@ -22,7 +22,8 @@ augroup END
 -- autocmd ColorScheme * highlight GitSigns* ctermbg=NONE guibg=NONE
 
 -- load your colorscheme after the augroup using a protected call
-local colorscheme = "carbonfox"
+-- local colorscheme = "carbonfox"
+local colorscheme = "tokyodark"
 
 local statusOk, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
