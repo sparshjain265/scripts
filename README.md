@@ -1,6 +1,6 @@
 # scripts (for arch)
 
-This repo contains a template bash script and any personal scripts created for portability.
+This repo contains a template bash script and any personal scripts created for portability. They work on my primary `archlinux` setup but should work on any linux (or even unix) based system with minor tweeks. Unmaintained versions of the scripts that I used in my `ubuntu` setup prior to switching to arch can be found in [this](https://github.com/sparshjain265/scripts/tree/ubuntu) branch.
 
 Required symlinks and chmods are listed below.
 
