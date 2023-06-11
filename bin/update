@@ -1,0 +1,179 @@
+#!/usr/bin/bash
+################################################################################
+#                                 update                                       #
+#                                                                              #
+# This is a script written to automate the update of repos, upgrade as         #
+# required, and remove unnecessary packages                                    #
+# This is a hello world script written while learning about bash scripting.    #
+#                                                                              #
+# Change History                                                               #
+# 2022 Feb 05	Sparsh Jain - Switch to paru from yay
+# 2020 Nov 04	Sparsh Jain - Reorganise									   #
+# 2020 Aug 06	Sparsh Jain - Original code.								   #
+#                                                                              #
+################################################################################
+################################################################################
+################################################################################
+#                                                                              #
+#                                   License                                    #
+#                                                                              #
+################################################################################
+################################################################################
+################################################################################
+
+################################################################################
+# Help                                                                         #
+################################################################################
+Help()
+{
+   # Display Help
+   echo "Description of the script functions"
+   echo
+   echo "Syntax: $ update [-h|e|q|V]"
+   echo "options:"
+   # echo "g     Print the GPL license notification."
+   echo "h     Print this Help."
+   # echo "v     Verbose mode."
+   echo "e     Run an extended version to update programs installed from outside
+	  of apt."
+   echo "q     Run quietly. Check ~/temp/update.log for details."
+   echo "V     Print software version and exit."
+   echo
+}
+
+################################################################################
+# Version
+################################################################################
+Version()
+{
+   # Display Version
+   echo "update 2.1"
+   echo
+}
+
+################################################################################
+# Check for root.                                                              #
+################################################################################
+CheckRoot()
+{
+   if [ `id -u` != 0 ]
+   then
+	  echo "ERROR: You must be root user to run this program! Try with sudo!"
+	  echo 
+	  exit
+   fi  
+}
+
+################################################################################
+# Init																		   #
+################################################################################
+Init()
+{
+	# Initialize variables
+	option=""
+	msg="Hello World!"
+	extended=0
+	# save stdout
+	exec 6>&1
+	# save stderr
+	exec 7>&2
+}
+
+################################################################################
+# Exit 																		   #
+################################################################################
+Exit()
+{
+	# restore stdout
+	exec 1>&6 6>&-
+	# restore stderr
+	exec 2>&7 7>&-
+	# exit
+	exit
+}
+
+################################################################################
+################################################################################
+# Main program                                                                 #
+################################################################################
+################################################################################
+
+################################################################################
+# Sanity checks                                                                #
+################################################################################
+# Are we running as root?
+# CheckRoot # uncomment this line to enable check for root 
+
+################################################################################
+# Initialize
+################################################################################
+Init
+
+################################################################################
+# Process the input options. Add options as needed.                            #
+################################################################################
+# Get the options
+while getopts "heqV" option; do
+   case $option in
+	  h) # display Help
+		 Help
+		 Exit
+		 ;;
+	  e) # enable extended mode
+		 extended=1
+		 ;;
+	  q) # run quietly
+		 # redirect output to .stdout
+		 exec 1> ~/temp/update.log
+		 # redirect error to .stderr
+		 exec 2> ~/temp/update.log
+		 ;;
+	  V) # display version
+		 Version
+		 Exit
+		 ;;
+	 \?) # incorrect option
+		 echo "Error: Invalid option"
+		 Exit
+		 ;;
+   esac
+done
+
+# Are we running as root?
+# CheckRoot # uncomment this line to enable check for root 
+
+# update official packages
+# sudo pacman -Syu
+
+# update AUR packages
+# yay -Syu
+paru -Syu
+
+# if running in extended version
+if [ $extended = 1 ]; then
+   # update extra packagers here
+
+   # cabal hackage package
+   cabal update
+
+   # not needed, thefuck package is insalled via pacman
+   #    # update thefuck
+   #    pip3 install thefuck --upgrade
+
+   # not needed, there is a nice package in the AUR now
+   # # update veikk driver for linux
+   # dir=$(pwd)
+   # cd /home/wheezy/veikk/veikk-linux-driver
+   # # git fetch
+   # make
+   # sudo make all install clean
+   # sudo modprobe veikk
+   # cd $dir
+fi
+
+# cleaning
+# remove package files
+# sudo pacman -Sc
+# yay -Scc
+# paru -Scc
+Exit

@@ -1,0 +1,27 @@
+#!/bin/bash
+# Manage logout with rofi
+option=`echo -e "suspend\nhibernate\nlock screen\nlogout\nreboot\npoweroff\nKill user $USER" | rofi -width 600 -dmenu -p system:`
+case $option in
+    suspend)
+        /usr/bin/systemctl suspend
+        ;;
+    hibernate)
+	    /usr/bin/systemctl hibernate
+	    ;;
+    'lock screen')
+        i3lock -i ~/scripts/i3/images/hogwarts-burning.jpg
+        # /usr/bin/dm-tool switch-to-greeter
+		;;
+    logout)
+        i3-msg exit, mode "default"
+		;;
+    reboot)
+        /usr/bin/systemctl reboot
+        ;;
+    poweroff)
+        /usr/bin/systemctl poweroff
+        ;;
+    'kill user $USER')
+        loginctl kill-user $USER
+        ;;
+esac

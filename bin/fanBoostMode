@@ -1,0 +1,121 @@
+#!/usr/bin/bash
+################################################################################
+#                                 fanBoostMode                                 #
+#                                                                              #
+# This is a script written to set up git repo for overleaf projects	           #
+#                                                                              #
+# Change History                                                               #
+# 2022 July 6	Sparsh Jain - Original code.								   #
+#                                                                              #
+################################################################################
+################################################################################
+################################################################################
+#                                                                              #
+#                                   License                                    #
+#                                                                              #
+################################################################################
+################################################################################
+################################################################################
+
+################################################################################
+# Help                                                                         #
+################################################################################
+Help()
+{
+   # Display Help
+   # echo "Description of the script functions"
+   echo
+   echo "Usage: $ sudo fanBoostMode [-h|d|o|s|g]"
+   echo "options:"
+   # echo "g     Print the GPL license notification."
+   echo "h     Print this Help (can be used without sudo)"
+   echo
+   echo "g     (default behavior if no option is provided) Get the current thermal throttling policy level (can be used without sudo)"
+   echo
+   echo "Change fan speed by changing thermal throttling policy"
+   echo "d     default: level 0"
+   echo "o     overboost: level 1"
+   echo "s     silent: level 2"
+   echo
+}
+
+################################################################################
+# Check for root.                                                              #
+################################################################################
+CheckRoot()
+{
+   if [ `id -u` != 0 ]
+   then
+	  echo "ERROR: You must be root user to run this program! Try with sudo!"
+	  echo 
+	  exit
+   fi  
+}
+
+################################################################################
+# Init																		   #
+################################################################################
+Init()
+{
+	# Initialize variables
+	option=""
+}
+
+################################################################################
+# Exit 																		   #
+################################################################################
+Exit()
+{
+	# exit
+	exit
+}
+
+################################################################################
+################################################################################
+# Main program                                                                 #
+################################################################################
+################################################################################
+
+################################################################################
+# Initialize
+################################################################################
+Init $1
+
+################################################################################
+# Process the input options. Add options as needed.                            #
+################################################################################
+# Get the options
+while getopts "hdosg" option; do
+   case $option in
+	  h) # display Help
+		 Help
+		 Exit
+		 ;;
+	  d) # default mode
+	     CheckRoot
+	  	 echo 0 > /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+		 Exit
+		 ;;
+	  o) # overboost mode
+	     CheckRoot
+	  	 echo 1 > /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+		 Exit
+		 ;;
+	  s) # silent mode
+	     CheckRoot
+	  	 echo 2 > /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+		 Exit
+		 ;;
+	  g) # get mode level
+	     cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+		 Exit
+	  	 ;;
+	 \?) # incorrect option
+		 echo "Error: Invalid option"
+		 Exit
+		 ;;
+   esac
+done
+
+# get if no option
+cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy

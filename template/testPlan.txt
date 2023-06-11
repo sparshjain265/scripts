@@ -1,0 +1,9 @@
+1.  The name and a short description of the software being tested
+2.  A description of the software features to be tested
+3.  The starting conditions for each test
+4.  The functions to follow for each test
+5.  A description of the desired outcome for each test
+6.  Specific tests designed to test for negative outcomes
+7.  Tests for how the program handles unexpected inputs
+8.  A clear description of what constitutes pass or fail for each test
+9.  Fuzzy testing
