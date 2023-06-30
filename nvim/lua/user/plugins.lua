@@ -64,6 +64,9 @@ return packer.startup(function(use)
 	-- Indentation lines
 	use("lukas-reineke/indent-blankline.nvim")
 
+	-- Table mode
+	use("dhruvasagar/vim-table-mode")
+
 	-- Startup screen
 	use("goolord/alpha-nvim")
 
