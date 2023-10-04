@@ -2,3 +2,4 @@
 .stderr
 .log
 Session.vim
+wget-log
