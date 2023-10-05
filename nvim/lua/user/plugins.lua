@@ -95,13 +95,16 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets") -- a bunch of helpful snippets
 
 	-- LSP
-	use("neovim/nvim-lspconfig")
+	-- use("williamboman/nvim-lsp-installer") -- replaced with mason.nvim
 	use({
 		"williamboman/mason.nvim",
 		run = ":MasonUpdate",
 	}) -- simple to use language server installer
 	use("williamboman/mason-lspconfig.nvim")
+	use("neovim/nvim-lspconfig")
 	use("jose-elias-alvarez/null-ls.nvim") -- LSP diagnostics and code actions
+	-- use("jay-babu/mason-null-ls.nvim")
+	use("mfussenegger/nvim-jdtls")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")

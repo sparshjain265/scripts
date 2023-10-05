@@ -90,9 +90,12 @@ M.on_attach = function(client, bufnr)
 	lsp_highlight_document(client)
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 local statusOk, cmpNvimLsp = pcall(require, "cmp_nvim_lsp")
 if statusOk then
-	M.capabilities = cmpNvimLsp.default_capabilities()
+	M.capabilities = cmpNvimLsp.default_capabilities(capabilities)
+	-- M.capabilities = cmpNvimLsp.update_capabilities(capabilities)
 end
 
 return M
