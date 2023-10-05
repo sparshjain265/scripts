@@ -109,13 +109,13 @@ bindsym XF86Launch4 exec asusctl profile -n
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty -1
-# bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec kitty -1
+bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+x exec terminator
 
 # Enable Print Screen
 # screenshot and save full screen
-bindsym --release $mod+Print exec gnome-screenshot
+bindsym --release $mod+Print exec "gnome-screenshot && touch ~/openpilot/tools/sim/output/yes"
 # screenshot and save selection
 bindsym --release Ctrl+Print exec gnome-screenshot -a
 # screenshot and clipboard full screen
@@ -364,29 +364,29 @@ bar {
     tray_output primary
 }
 
-bar {
-    id bar_top
-    # status_command i3status
-    status_command i3blocks -c ~/.config/i3/i3blocksTop.conf
-    font pango:Hack, FontAwesome 10
-
-    colors {
-        separator $transparent
-    }
-
-    # don't show workspace buttons
-    workspace_buttons no
-    # show this bar on top
-    position top
-    # this bar can be shown/hidden
-    mode hide 
-    # start with this bar hidden
-    # hidden_state hide 
-    # $mod key shows this bar if hidden
-    modifier $mod 
-    # no need to show the tray output on this bar
-    tray_output none 
-}
+# bar {
+#     id bar_top
+#     # status_command i3status
+#     status_command i3blocks -c ~/.config/i3/i3blocksTop.conf
+#     font pango:Hack, FontAwesome 10
+# 
+#     colors {
+#         separator $transparent
+#     }
+# 
+#     # don't show workspace buttons
+#     workspace_buttons no
+#     # show this bar on top
+#     position top
+#     # this bar can be shown/hidden
+#     mode hide 
+#     # start with this bar hidden
+#     # hidden_state hide 
+#     # $mod key shows this bar if hidden
+#     modifier $mod 
+#     # no need to show the tray output on this bar
+#     tray_output none 
+# }
 
 # toggle top bar 
 bindsym $mod+grave bar mode toggle bar_top
@@ -445,9 +445,12 @@ for_window [title="Prime"] move window to workspace $ws2
 for_window [title="HBO Max"] move window to workspace $ws2
 for_window [title="Disney+"] move window to workspace $ws2
 
+# openpilot _ui on ws5
+for_window [class="_ui"] move window to workspace $ws5
+
 # pavucontrol on ws11
-assign [class="Pavucontrol"] $ws11
-exec --no-startup-id pavucontrol
+# assign [class="Pavucontrol"] $ws11
+# exec --no-startup-id pavucontrol
 
 # terminal on ws12
 exec --no-startup-id i3-msg 'workspace 12; exec kitty -1; workspace 1'
@@ -455,15 +458,15 @@ exec --no-startup-id i3-msg 'workspace 12; exec kitty -1; workspace 1'
 # # mail on ws13
 # for_window [title="Gmail"] move window to workspace $ws13
 
-# social media on ws14
+# social media on ws20
 # whatsapp
-for_window [title="WhatsApp"] move window to workspace $ws14
-# facebook on ws14
-for_window [title="Facebook"] move window to workspace $ws14
-# instagram on ws14
-for_window [title="Instagram"] move window to workspace $ws14
-# # discord on ws14
-# for_window [title="Discord"] move window to workspace $ws14
+for_window [title="WhatsApp"] move window to workspace $ws20
+# facebook
+for_window [title="Facebook"] move window to workspace $ws20
+# instagram
+for_window [title="Instagram"] move window to workspace $ws20
+# # discord 
+# for_window [title="Discord"] move window to workspace $ws20
 
 # telegram on ws17
 assign [class="Telegram"] $ws17
