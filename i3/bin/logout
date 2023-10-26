@@ -9,7 +9,7 @@ case $option in
 	    /usr/bin/systemctl hibernate
 	    ;;
     'lock screen')
-        i3lock -i ~/scripts/i3/images/hogwarts-burning.jpg
+        i3lock -c 000000
         # /usr/bin/dm-tool switch-to-greeter
 		;;
     logout)
