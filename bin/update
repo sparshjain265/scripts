@@ -134,6 +134,7 @@ while getopts "heqV" option; do
 		 ;;
 	 \?) # incorrect option
 		 echo "Error: Invalid option"
+         Help
 		 Exit
 		 ;;
    esac
