@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# DMENU="rofi -matching fuzzy -sorting-method fzf -dmenu -i -p 'apps'"
+# HISTORY_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/mru_apps.txt"
+# 
+# # Fetch all apps in alphabetical order
+# ALL_APPS=$(i3-dmenu-desktop --dmenu='cat')
+# 
+# # Filter MRU apps that still exist
+# if [[ -f "$HISTORY_FILE" ]]; then
+#     MRU=$(grep -Fx -f <(echo "$ALL_APPS") "$HISTORY_FILE")
+#     MENU=$(printf "%s\n%s" "$MRU" "$ALL_APPS" | awk '!seen[$0]++')
+# else
+#     MENU="$ALL_APPS"
+# fi
+# 
+# # Display Rofi Menu (fuzzy matching enabled)
+# SELECTION=$(echo "$MENU" | $DMENU)
+# 
+# if [[ -n "$SELECTION" ]]; then
+#     # Launch app
+#     i3-dmenu-desktop --exec "$SELECTION" --dmenu='cat'
+# 
+#     # Update MRU List
+#     grep -Fxv "$SELECTION" "$HISTORY_FILE" 2>/dev/null > "${HISTORY_FILE}.tmp"
+#     echo "$SELECTION" >> "${HISTORY_FILE}.tmp"
+#     tac "${HISTORY_FILE}.tmp" > "$HISTORY_FILE"
+#     rm -f "${HISTORY_FILE}.tmp"
+# fi
+
+
+
+# Run rofi app launcher
+i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"

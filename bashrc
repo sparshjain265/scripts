@@ -53,6 +53,9 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+  if [ -f /usr/share/bash-completion/completions/git ]; then
+    . /usr/share/bash-completion/completions/git
+  fi
   if [ -f /usr/share/bash-complete-alias/complete_alias ]; then
 	  . /usr/share/bash-complete-alias/complete_alias
 	  complete -F _complete_alias "${!BASH_ALIASES[@]}"
@@ -112,6 +115,15 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 export PS1="\[\033[01;32m\][\D{%Y-%m-%d} \t] [\h \u]\[\033[00m\] \[\033[01;36m\]\w\`parse_git_branch\` \n\[\033[00m\]\$ "
 
+exercism () {
+    local out
+    readarray -t out < <(command exercism "$@")
+    printf '%s\n' "${out[@]}"
+    if [[ $1 == "download" && -d "${out[-1]}" ]]; then
+        cd "${out[-1]}" || return 1
+    fi
+}
+
 # thefuck
 # eval $(thefuck --alias --enable-experimental-instant-mode)
 eval $(thefuck --alias)
@@ -124,7 +136,7 @@ PERL_LOCAL_LIB_ROOT="/home/padfoot/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB
 PERL_MB_OPT="--install_base \"/home/padfoot/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/padfoot/perl5"; export PERL_MM_OPT;
 
-# cabal path 
+# cabal path
 export PATH="$HOME/.cabal/bin:$PATH"
 
 # rbenv init
@@ -157,18 +169,18 @@ export FZF_DEFAULT_OPTS="--cycle"
 # export FZF_COMPLETION_AUTO_COMMON_PREFIX=true
 # export FZF_COMPLETION_AUTO_COMMON_PREFIX_PART=true
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/padfoot/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/padfoot/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/padfoot/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/padfoot/anaconda3/bin:$PATH"
-    fi
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-complete-alias/complete_alias ]; then
+	  . /usr/share/bash-complete-alias/complete_alias
+	  complete -F _complete_alias "${!BASH_ALIASES[@]}"
+  fi
 fi
-unset __conda_setup
-# <<< conda initialize <<<
+
+touch $XDG_RUNTIME_DIR/ssh-agent.env
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 24h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [ ! -f "$SSH_AUTH_SOCK" ]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
 

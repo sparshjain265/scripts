@@ -1,0 +1,21 @@
+output DP-1
+off
+output eDP-2
+off
+output HDMI-1
+off
+output DP-5
+crtc 0
+mode 3840x2160
+pos 0x0
+primary
+rate 60.00
+x-prop-colorspace Default
+x-prop-non_desktop 0
+output DP-4
+crtc 2
+mode 3840x2160
+pos 3840x0
+rate 60.00
+x-prop-colorspace Default
+x-prop-non_desktop 0

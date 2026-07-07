@@ -1,0 +1,6 @@
+#!/bin/bash
+# Run rofi app launcher
+i3-dmenu-desktop --dmenu="rofi -show drun -run-command 'gksudo {cmd}'"
+# gksudo i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"
+# i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"
+# gksudo dmenu_run
